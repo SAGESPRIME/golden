@@ -1,0 +1,97 @@
+{
+  "version": "2.0",
+  "branchName": "feature/product-catalog",
+  "constitution": "specs/constitution.md",
+  "spec": "specs/001-product-catalog-2026-02-15",
+  "plan": "specs/001-product-catalog-2026-02-15/plan.md",
+  "validation": {
+    "preCommit": [
+      "npm run typecheck",
+      "npm run lint",
+      "npx vitest run"
+    ],
+    "checklist": [
+      "Tests ecrits",
+      "Pas de any",
+      "Fichiers < 200 lignes",
+      "Traductions FR + AR presentes",
+      "Compatible RTL"
+    ]
+  },
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Schema Convex pour les produits",
+      "description": "En tant que developpeur, je veux le schema de base pour stocker les produits miel",
+      "acceptanceCriteria": [
+        "Table products dans convex/schema.ts",
+        "Types TypeScript generes",
+        "typecheck passe"
+      ],
+      "technicalNotes": "Champs : name_fr, name_ar, description_fr, description_ar, price, weight, image, category, stock, featured",
+      "filesToCreate": [
+        "convex/schema.ts",
+        "convex/products.ts"
+      ],
+      "filesToModify": [],
+      "priority": 1,
+      "blockedBy": [],
+      "estimatedSize": "S",
+      "status": "pending"
+    },
+    {
+      "id": "US-002",
+      "title": "Page catalogue produits",
+      "description": "En tant qu'utilisateur, je veux voir la liste des miels disponibles avec filtres",
+      "acceptanceCriteria": [
+        "Grille de produits responsive",
+        "Filtres par categorie",
+        "Traductions FR et AR",
+        "Layout RTL correct",
+        "Tests passent"
+      ],
+      "technicalNotes": "Utiliser shadcn/ui Card, Badge. Grid responsive 1-2-3-4 colonnes.",
+      "filesToCreate": [
+        "src/app/[locale]/products/page.tsx",
+        "src/components/products/ProductCard.tsx",
+        "src/components/products/ProductGrid.tsx",
+        "src/components/products/ProductFilters.tsx"
+      ],
+      "filesToModify": [
+        "messages/fr.json",
+        "messages/ar.json"
+      ],
+      "priority": 2,
+      "blockedBy": ["US-001"],
+      "estimatedSize": "L",
+      "status": "pending"
+    },
+    {
+      "id": "US-003",
+      "title": "Page detail produit",
+      "description": "En tant qu'utilisateur, je veux voir les details d'un miel et l'ajouter au panier",
+      "acceptanceCriteria": [
+        "Galerie images",
+        "Description complete bilingue",
+        "Bouton ajout panier",
+        "Selecteur quantite",
+        "Compatible RTL"
+      ],
+      "technicalNotes": "Route dynamique [locale]/products/[id]. Utiliser Zustand pour le panier.",
+      "filesToCreate": [
+        "src/app/[locale]/products/[id]/page.tsx",
+        "src/components/products/ProductDetail.tsx",
+        "src/components/products/ProductGallery.tsx",
+        "src/stores/cart-store.ts"
+      ],
+      "filesToModify": [
+        "messages/fr.json",
+        "messages/ar.json"
+      ],
+      "priority": 3,
+      "blockedBy": ["US-001"],
+      "estimatedSize": "M",
+      "status": "pending"
+    }
+  ]
+}

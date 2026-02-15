@@ -1,0 +1,61 @@
+{
+  "common": {
+    "siteName": "Golden Defla",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "backToHome": "Retour a l'accueil"
+  },
+  "nav": {
+    "home": "Accueil",
+    "products": "Nos Miels",
+    "cart": "Panier",
+    "account": "Mon Compte",
+    "admin": "Administration"
+  },
+  "home": {
+    "hero": {
+      "title": "Miel Premium d'Algerie",
+      "subtitle": "Decouvrez nos miels d'exception, recoltes avec soin dans les montagnes de Kabylie",
+      "cta": "Decouvrir nos miels"
+    },
+    "featured": {
+      "title": "Nos miels vedettes",
+      "viewAll": "Voir tous les miels"
+    }
+  },
+  "products": {
+    "title": "Nos Miels",
+    "addToCart": "Ajouter au panier",
+    "outOfStock": "Rupture de stock",
+    "weight": "Poids",
+    "category": "Categorie",
+    "featured": "Vedette",
+    "price": "Prix"
+  },
+  "cart": {
+    "title": "Mon Panier",
+    "empty": "Votre panier est vide",
+    "total": "Total",
+    "checkout": "Commander",
+    "remove": "Supprimer",
+    "continueShopping": "Continuer vos achats"
+  },
+  "checkout": {
+    "title": "Finaliser la commande",
+    "shipping": "Adresse de livraison",
+    "payment": "Paiement",
+    "fullName": "Nom complet",
+    "address": "Adresse",
+    "city": "Ville",
+    "postalCode": "Code postal",
+    "country": "Pays",
+    "phone": "Telephone",
+    "placeOrder": "Passer la commande"
+  },
+  "footer": {
+    "description": "Miel premium d'Algerie, recolte avec passion et tradition.",
+    "quickLinks": "Liens rapides",
+    "contact": "Contact",
+    "rights": "Tous droits reserves."
+  }
+}
