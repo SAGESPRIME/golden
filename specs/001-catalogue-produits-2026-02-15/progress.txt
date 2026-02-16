@@ -1,0 +1,23 @@
+# Progress: Catalogue Produits
+# Spec: 001-catalogue-produits-2026-02-15
+# Started: 2026-02-15
+
+## Stories
+
+- [x] US-005: Donnees seed de developpement [done]
+- [x] US-001: Page listing produits [done]
+- [x] US-002: Filtrage par categorie [done]
+- [x] US-003: Fiche produit [done]
+- [x] US-004: Ajout au panier [done]
+- [x] US-006: Section produits vedettes sur la homepage [done]
+
+## Log
+
+[2026-02-15] Initialized prd.json and progress.txt
+[2026-02-16] US-005: Created seed.ts (7 products), use-products.ts hook, index.ts exports - 9 tests pass
+[2026-02-16] US-001: Created ProductCard, ProductGrid, products page - 25 tests pass
+[2026-02-16] US-002: Created CategoryFilter, ProductCatalog with client-side filtering - 29 tests pass
+[2026-02-16] US-003: Created ImageGallery, ProductDetail, product detail page - 42 tests pass
+[2026-02-16] US-004: Created AddToCartButton, Header with cart counter, integrated sonner toast - 47 tests pass
+[2026-02-16] US-006: Created FeaturedProducts, integrated in homepage - 51 tests pass
+[2026-02-16] All stories complete. typecheck OK, lint OK (0 errors), 51 tests pass.

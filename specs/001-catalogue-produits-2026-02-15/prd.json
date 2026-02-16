@@ -1,0 +1,207 @@
+{
+  "version": "2.0",
+  "branchName": "feature/catalogue-produits",
+  "constitution": "specs/constitution.md",
+  "spec": "specs/001-catalogue-produits-2026-02-15",
+  "plan": "specs/001-catalogue-produits-2026-02-15/plan.md",
+  "validation": {
+    "preCommit": [
+      "npm run typecheck",
+      "npm run lint",
+      "npx vitest run"
+    ],
+    "checklist": [
+      "Tests ecrits AVANT le code",
+      "Pas de any",
+      "Fichiers < 100 lignes",
+      "Traductions FR + AR",
+      "Compatible RTL (classes logiques)"
+    ]
+  },
+  "userStories": [
+    {
+      "id": "US-005",
+      "title": "Donnees seed de developpement",
+      "description": "En tant que developpeur, je veux des donnees de produits de demo afin de pouvoir developper et tester le catalogue sans backend Convex connecte.",
+      "acceptanceCriteria": [
+        "Fichier de donnees seed avec 6-8 produits de demo",
+        "Variete de categories (3-5 differentes)",
+        "Mix de produits en stock et en rupture",
+        "Au moins 1 produit avec compareAtPrice",
+        "Noms et descriptions bilingues FR + AR",
+        "Images placeholder",
+        "Hook useProducts() avec seed data en fallback",
+        "typecheck passe",
+        "tests passent"
+      ],
+      "technicalNotes": "Fichier src/features/products/data/seed.ts. Hook useProducts() retourne seed data. Les seed data suivent exactement le schema Convex products.",
+      "filesToCreate": [
+        "src/features/products/types.ts",
+        "src/features/products/data/seed.ts",
+        "src/features/products/hooks/use-products.ts",
+        "src/features/products/hooks/use-products.test.ts",
+        "src/features/products/index.ts"
+      ],
+      "filesToModify": [],
+      "priority": 1,
+      "blockedBy": [],
+      "estimatedSize": "S",
+      "status": "done"
+    },
+    {
+      "id": "US-001",
+      "title": "Page listing produits",
+      "description": "En tant que visiteur, je veux voir la liste de tous les miels disponibles afin de decouvrir l'offre Golden Defla.",
+      "acceptanceCriteria": [
+        "Page accessible sur /fr/products et /ar/products",
+        "Grille responsive : 1 col mobile, 2 col tablette, 3 col desktop",
+        "Chaque card affiche : image, nom, prix, poids, categorie",
+        "Si compareAtPrice existe : ancien prix barre + badge promo",
+        "Produits en rupture : badge Rupture de stock, card legerement opaque",
+        "typecheck passe",
+        "tests passent",
+        "Traductions FR + AR presentes",
+        "Compatible RTL"
+      ],
+      "technicalNotes": "Composant ProductCard dans src/features/products/components/. Utiliser shadcn/ui Card, Badge, Button. Prix formate avec formatPrice(). next/image pour les images produit.",
+      "filesToCreate": [
+        "src/features/products/components/product-card.tsx",
+        "src/features/products/components/product-card.test.tsx",
+        "src/features/products/components/product-grid.tsx",
+        "src/features/products/components/product-grid.test.tsx",
+        "src/app/[locale]/products/page.tsx"
+      ],
+      "filesToModify": [
+        "src/messages/fr.json",
+        "src/messages/ar.json"
+      ],
+      "priority": 1,
+      "blockedBy": ["US-005"],
+      "estimatedSize": "M",
+      "status": "done"
+    },
+    {
+      "id": "US-002",
+      "title": "Filtrage par categorie",
+      "description": "En tant que visiteur, je veux filtrer les miels par categorie afin de trouver rapidement le type de miel qui m'interesse.",
+      "acceptanceCriteria": [
+        "Barre de filtres au-dessus de la grille (boutons/onglets)",
+        "Option Tous pour afficher tout le catalogue",
+        "Un bouton par categorie existante",
+        "Filtrage cote client (pas de rechargement)",
+        "Categorie active visuellement mise en evidence",
+        "typecheck passe",
+        "tests passent",
+        "Traductions FR + AR des noms de categories",
+        "Compatible RTL"
+      ],
+      "technicalNotes": "Composant CategoryFilter avec useState. Filtrage cote client. Ajouter cles categories.* dans les messages FR/AR.",
+      "filesToCreate": [
+        "src/features/products/components/category-filter.tsx",
+        "src/features/products/components/category-filter.test.tsx"
+      ],
+      "filesToModify": [
+        "src/app/[locale]/products/page.tsx",
+        "src/messages/fr.json",
+        "src/messages/ar.json"
+      ],
+      "priority": 2,
+      "blockedBy": ["US-001"],
+      "estimatedSize": "S",
+      "status": "done"
+    },
+    {
+      "id": "US-003",
+      "title": "Fiche produit",
+      "description": "En tant que visiteur, je veux consulter la fiche detaillee d'un miel afin de voir ses images, sa description et ses caracteristiques avant d'acheter.",
+      "acceptanceCriteria": [
+        "Page accessible sur /fr/products/[slug] et /ar/products/[slug]",
+        "Galerie d'images : image principale + miniatures cliquables",
+        "Nom, description, prix, poids, categorie affiches",
+        "Si compareAtPrice : ancien prix barre + pourcentage de reduction",
+        "Si rupture de stock : mention claire, bouton desactive",
+        "Lien retour vers le catalogue",
+        "typecheck passe",
+        "tests passent",
+        "Traductions FR + AR presentes",
+        "Compatible RTL"
+      ],
+      "technicalNotes": "Composant ProductDetail + ImageGallery. Utiliser products.getBySlug (seed fallback). Page 404 si slug invalide. Installer shadcn separator.",
+      "filesToCreate": [
+        "src/features/products/components/image-gallery.tsx",
+        "src/features/products/components/image-gallery.test.tsx",
+        "src/features/products/components/product-detail.tsx",
+        "src/features/products/components/product-detail.test.tsx",
+        "src/app/[locale]/products/[slug]/page.tsx"
+      ],
+      "filesToModify": [
+        "src/messages/fr.json",
+        "src/messages/ar.json"
+      ],
+      "priority": 3,
+      "blockedBy": ["US-001"],
+      "estimatedSize": "M",
+      "status": "done"
+    },
+    {
+      "id": "US-004",
+      "title": "Ajout au panier",
+      "description": "En tant que visiteur, je veux ajouter un miel au panier depuis la card ou la fiche produit afin de preparer ma commande.",
+      "acceptanceCriteria": [
+        "Bouton Ajouter au panier sur chaque ProductCard",
+        "Bouton Ajouter au panier sur la fiche produit",
+        "Bouton desactive si produit en rupture de stock",
+        "Feedback visuel apres ajout (toast sonner)",
+        "Le compteur panier dans le header se met a jour",
+        "typecheck passe",
+        "tests passent",
+        "Traductions FR + AR presentes",
+        "Compatible RTL"
+      ],
+      "technicalNotes": "Composant AddToCartButton utilise useCart() hook + Zustand store. Header minimal avec compteur. Installer shadcn sonner pour le toast feedback. Integrer Toaster dans le layout.",
+      "filesToCreate": [
+        "src/features/products/components/add-to-cart-button.tsx",
+        "src/features/products/components/add-to-cart-button.test.tsx",
+        "src/components/layout/header.tsx"
+      ],
+      "filesToModify": [
+        "src/features/products/components/product-card.tsx",
+        "src/features/products/components/product-detail.tsx",
+        "src/app/[locale]/layout.tsx",
+        "src/messages/fr.json",
+        "src/messages/ar.json"
+      ],
+      "priority": 4,
+      "blockedBy": ["US-001", "US-003"],
+      "estimatedSize": "S",
+      "status": "done"
+    },
+    {
+      "id": "US-006",
+      "title": "Section produits vedettes sur la homepage",
+      "description": "En tant que visiteur, je veux voir les miels vedettes sur la page d'accueil afin de decouvrir les produits phares sans aller sur le catalogue.",
+      "acceptanceCriteria": [
+        "Section Nos miels vedettes sur la homepage",
+        "Affiche 3-4 produits avec featured: true",
+        "Utilise le meme composant ProductCard",
+        "Lien Voir tous les miels vers /[locale]/products",
+        "typecheck passe",
+        "tests passent",
+        "Traductions FR + AR presentes",
+        "Compatible RTL"
+      ],
+      "technicalNotes": "Composant FeaturedProducts filtre les seed data par featured: true. Integrer dans src/app/[locale]/page.tsx.",
+      "filesToCreate": [
+        "src/features/products/components/featured-products.tsx",
+        "src/features/products/components/featured-products.test.tsx"
+      ],
+      "filesToModify": [
+        "src/app/[locale]/page.tsx"
+      ],
+      "priority": 5,
+      "blockedBy": ["US-001", "US-005"],
+      "estimatedSize": "S",
+      "status": "done"
+    }
+  ]
+}
