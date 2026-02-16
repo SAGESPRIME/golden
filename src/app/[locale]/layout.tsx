@@ -4,6 +4,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { Providers } from './providers';
 import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/sonner';
 import '@/app/globals.css';
 
@@ -29,11 +30,12 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} dir={direction} suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
         <NextIntlClientProvider>
           <Providers>
             <Header locale={locale} />
-            {children}
+            <div className="flex-1">{children}</div>
+            <Footer locale={locale} />
             <Toaster />
           </Providers>
         </NextIntlClientProvider>

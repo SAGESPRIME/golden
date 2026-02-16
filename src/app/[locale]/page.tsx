@@ -1,17 +1,48 @@
+import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { FeaturedProducts } from '@/features/products/components/featured-products';
+import {
+  generatePageMetadata,
+  generateOrganizationSchema,
+} from '@/lib/metadata';
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return generatePageMetadata({
+    title:
+      locale === 'ar'
+        ? 'عسل جزائري فاخر'
+        : 'Miel premium d\'Algerie',
+    description:
+      locale === 'ar'
+        ? 'اكتشف تشكيلتنا من العسل الجزائري الفاخر، يُحصد بشغف وتقاليد عريقة.'
+        : 'Decouvrez notre selection de miels d\'Algerie, recoltes avec passion et tradition.',
+    path: '',
+    locale,
+  });
+}
+
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <HomeContent locale={locale} />;
+  const orgSchema = generateOrganizationSchema();
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
+      <HomeContent locale={locale} />
+    </>
+  );
 }
 
 function HomeContent({ locale }: { locale: string }) {

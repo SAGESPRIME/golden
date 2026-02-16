@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
-import { ProductCatalog } from '@/features/products/components/product-catalog';
+import { CheckoutContent } from '@/features/checkout';
 import { generatePageMetadata } from '@/lib/metadata';
 
 type Props = {
@@ -11,30 +11,30 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   return generatePageMetadata({
-    title: locale === 'ar' ? 'منتجاتنا' : 'Nos produits',
+    title: locale === 'ar' ? 'الدفع' : 'Paiement',
     description:
       locale === 'ar'
-        ? 'تصفح تشكيلتنا الكاملة من العسل الجزائري الفاخر.'
-        : 'Parcourez notre gamme complete de miels d\'Algerie premium.',
-    path: '/products',
+        ? 'اتمم عملية الشراء.'
+        : 'Finalisez votre commande.',
+    path: '/checkout',
     locale,
   });
 }
 
-export default async function ProductsPage({ params }: Props) {
+export default async function CheckoutPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <ProductsContent locale={locale} />;
+  return <CheckoutPageContent locale={locale} />;
 }
 
-function ProductsContent({ locale }: { locale: string }) {
-  const t = useTranslations('products');
+function CheckoutPageContent({ locale }: { locale: string }) {
+  const t = useTranslations('checkout');
 
   return (
     <main className="container mx-auto px-4 py-8 md:py-12">
       <h1 className="text-3xl font-bold tracking-tight mb-8">{t('title')}</h1>
-      <ProductCatalog locale={locale} />
+      <CheckoutContent locale={locale} />
     </main>
   );
 }
