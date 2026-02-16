@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { Providers } from './providers';
+import { Header } from '@/components/layout/header';
+import { Toaster } from '@/components/ui/sonner';
 import '@/app/globals.css';
 
 type Props = {
@@ -29,7 +31,11 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale} dir={direction} suppressHydrationWarning>
       <body className="min-h-screen bg-background font-sans antialiased">
         <NextIntlClientProvider>
-          <Providers>{children}</Providers>
+          <Providers>
+            <Header locale={locale} />
+            {children}
+            <Toaster />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

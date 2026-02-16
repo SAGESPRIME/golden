@@ -30,7 +30,25 @@
     "weight": "الوزن",
     "category": "الفئة",
     "featured": "مميز",
-    "price": "السعر"
+    "price": "السعر",
+    "description": "الوصف",
+    "backToCatalog": "العودة إلى الكتالوج",
+    "discount": "-{percent}%",
+    "grams": "{weight} غرام",
+    "noProducts": "لا توجد منتجات في هذه الفئة",
+    "addedToCart": "تمت الإضافة إلى السلة"
+  },
+  "categories": {
+    "all": "الكل",
+    "mountain": "عسل الجبال",
+    "forest": "عسل الغابة",
+    "flower": "عسل الأزهار",
+    "rare": "عسل نادر",
+    "organic": "عسل عضوي"
+  },
+  "header": {
+    "cart": "السلة",
+    "cartCount": "{count} عنصر"
   },
   "cart": {
     "title": "سلتي",

@@ -30,7 +30,25 @@
     "weight": "Poids",
     "category": "Categorie",
     "featured": "Vedette",
-    "price": "Prix"
+    "price": "Prix",
+    "description": "Description",
+    "backToCatalog": "Retour au catalogue",
+    "discount": "-{percent}%",
+    "grams": "{weight}g",
+    "noProducts": "Aucun produit dans cette categorie",
+    "addedToCart": "Produit ajoute au panier"
+  },
+  "categories": {
+    "all": "Tous",
+    "mountain": "Miel de montagne",
+    "forest": "Miel de foret",
+    "flower": "Miel de fleurs",
+    "rare": "Miel rare",
+    "organic": "Miel bio"
+  },
+  "header": {
+    "cart": "Panier",
+    "cartCount": "{count} article(s)"
   },
   "cart": {
     "title": "Mon Panier",
