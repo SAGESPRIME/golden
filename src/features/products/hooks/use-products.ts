@@ -7,7 +7,7 @@ export function useProducts(): UseProductsReturn {
 
   const featuredProducts = useMemo(
     () => products.filter((p) => p.featured),
-    [products],
+    [products]
   );
 
   const categories = useMemo(() => {

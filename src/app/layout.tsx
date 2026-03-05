@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Golden Defla - Miel Premium d\'Algerie',
+  title: 'Miel France Bio — Miel bio francais certifie',
   description:
-    'Decouvrez nos miels d\'exception, recoltes avec soin dans les montagnes d\'Algerie.',
+    'Miel France Bio, maison francaise de miel biologique. Recolte, certifie, tracable.',
 };
 
 export default function RootLayout({

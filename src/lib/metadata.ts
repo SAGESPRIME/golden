@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import type { SeedProduct } from '@/features/products/types';
 
-const SITE_NAME = 'Golden Defla';
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://goldendefla.com';
+const SITE_NAME = 'Miel France Bio';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mielfrancebio.fr';
 
 interface PageMetadataOptions {
   title: string;
@@ -35,7 +35,7 @@ export function generatePageMetadata({
       description,
       url,
       siteName: SITE_NAME,
-      locale: locale === 'ar' ? 'ar_DZ' : 'fr_FR',
+      locale: locale === 'ar' ? 'ar_SA' : 'fr_FR',
       type: 'website',
     },
   };
@@ -43,7 +43,8 @@ export function generatePageMetadata({
 
 export function generateProductSchema(product: SeedProduct, locale: string) {
   const name = locale === 'ar' ? product.name.ar : product.name.fr;
-  const description = locale === 'ar' ? product.description.ar : product.description.fr;
+  const description =
+    locale === 'ar' ? product.description.ar : product.description.fr;
 
   return {
     '@context': 'https://schema.org',
@@ -73,6 +74,7 @@ export function generateOrganizationSchema() {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE_URL,
-    description: "Miel premium d'Algerie, recolte avec passion et tradition.",
+    description:
+      'Miel France Bio, maison francaise de miel biologique. Recolte, certifie, tracable.',
   };
 }

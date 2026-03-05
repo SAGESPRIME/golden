@@ -28,24 +28,24 @@ C'est tout. `/start` detecte l'etat et te guide automatiquement.
 
 ## Skills disponibles
 
-| Skill | Description |
-|-------|-------------|
-| `/start` | Point d'entree : detecte l'etat et guide |
-| `/init` | Initialise le projet si necessaire |
-| `/constitution` | Definir les principes du projet |
-| `/prd [description]` | Creer un PRD |
-| `/plan` | Creer le plan technique |
-| `/ralph` | Lancer l'implementation autonome |
-| `/review` | Review du code |
-| `/test` | Lancer et analyser les tests |
-| `/fix [erreur]` | Corriger une erreur |
+| Skill                | Description                              |
+| -------------------- | ---------------------------------------- |
+| `/start`             | Point d'entree : detecte l'etat et guide |
+| `/init`              | Initialise le projet si necessaire       |
+| `/constitution`      | Definir les principes du projet          |
+| `/prd [description]` | Creer un PRD                             |
+| `/plan`              | Creer le plan technique                  |
+| `/ralph`             | Lancer l'implementation autonome         |
+| `/review`            | Review du code                           |
+| `/test`              | Lancer et analyser les tests             |
+| `/fix [erreur]`      | Corriger une erreur                      |
 
 ## Agents disponibles
 
-| Agent | Usage |
-|-------|-------|
+| Agent                 | Usage                                                     |
+| --------------------- | --------------------------------------------------------- |
 | `fullstack-architect` | Architecture Next.js + Convex, routing, i18n, performance |
-| `git-workflow` | Branches, PR, merges, releases |
+| `git-workflow`        | Branches, PR, merges, releases                            |
 
 ## MCP Servers
 

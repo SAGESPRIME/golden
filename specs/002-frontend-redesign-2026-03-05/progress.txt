@@ -1,0 +1,14 @@
+RALPH PROGRESS — specs/002-frontend-redesign-2026-03-05
+Started: 2026-03-05
+Branch: feature/frontend-redesign
+
+US-001 [pending] Header 4-barres style Famille Mary
+US-002 [pending] Hero Carousel plein-largeur
+US-003 [pending] Trust Badges narratifs
+US-004 [pending] Grille de categories avec icones
+US-005 [pending] ProductCard style boutique classique
+US-006 [pending] Carousel des bienfaits categories
+US-007 [pending] Bandeau Histoire de la marque
+US-008 [pending] Bandeau 6 garanties services
+US-009 [pending] Footer multi-colonnes avec newsletter
+US-010 [pending] Mise a jour traductions et reordonnancement homepage

@@ -1,7 +1,21 @@
 import { defineSchema, defineTable } from 'convex/server';
 import { v } from 'convex/values';
+import { authTables } from '@convex-dev/auth/server';
 
 export default defineSchema({
+  ...authTables,
+
+  users: defineTable({
+    name: v.optional(v.string()),
+    email: v.optional(v.string()),
+    emailVerificationTime: v.optional(v.float64()),
+    image: v.optional(v.string()),
+    isAnonymous: v.optional(v.boolean()),
+    role: v.optional(v.union(v.literal('customer'), v.literal('admin'))),
+  })
+    .index('email', ['email'])
+    .index('by_role', ['role']),
+
   products: defineTable({
     name: v.object({
       fr: v.string(),
@@ -24,15 +38,9 @@ export default defineSchema({
     .index('by_category', ['category'])
     .index('by_featured', ['featured']),
 
-  users: defineTable({
-    name: v.string(),
-    email: v.string(),
-    role: v.union(v.literal('customer'), v.literal('admin')),
-    tokenIdentifier: v.optional(v.string()),
-  }).index('by_token', ['tokenIdentifier']),
-
   orders: defineTable({
-    userId: v.id('users'),
+    userId: v.optional(v.id('users')),
+    email: v.optional(v.string()),
     items: v.array(
       v.object({
         productId: v.string(),
@@ -65,6 +73,7 @@ export default defineSchema({
     createdAt: v.number(),
   })
     .index('by_user', ['userId'])
+    .index('by_email', ['email'])
     .index('by_status', ['status'])
     .index('by_stripe_session', ['stripeSessionId']),
 });

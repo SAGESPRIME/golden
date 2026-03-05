@@ -1,11 +1,13 @@
 # Skill: Technical Plan
 
 ---
+
 name: plan
 description: Cree un plan technique d'implementation a partir d'un PRD
 argument-hint: [--help]
 allowed-tools: Read, Write, Glob, Grep, AskUserQuestion
 disable-model-invocation: true
+
 ---
 
 ## Aide (--help)
@@ -43,6 +45,7 @@ Tu crees un plan technique detaille a partir d'un PRD.
 ### Workflow
 
 1. **Detecter le dernier dossier spec**
+
    ```bash
    ls -d specs/[0-9]*/ | sort -r | head -1
    ```
@@ -86,21 +89,22 @@ Tu crees un plan technique detaille a partir d'un PRD.
 **Justification** : [Pourquoi ce choix]
 
 ## Structure des fichiers
-
 ```
+
 src/
 ├── app/[locale]/[feature]/
-│   ├── page.tsx
-│   └── layout.tsx
+│ ├── page.tsx
+│ └── layout.tsx
 ├── components/[feature]/
-│   ├── [Component].tsx
-│   └── [Component].test.tsx
+│ ├── [Component].tsx
+│ └── [Component].test.tsx
 ├── convex/
-│   └── [feature].ts
+│ └── [feature].ts
 └── messages/
-    ├── fr.json    # + nouvelles cles
-    └── ar.json    # + nouvelles cles
-```
+├── fr.json # + nouvelles cles
+└── ar.json # + nouvelles cles
+
+````
 
 ## Fichiers a creer
 
@@ -122,14 +126,15 @@ src/
 
 ```bash
 npm install [package]
-```
+````
 
 ### Composants shadcn/ui a ajouter
 
 ```bash
 npx shadcn@latest add [component]
 ```
-```
+
+````
 
 #### data-model.md
 
@@ -148,14 +153,15 @@ export default defineSchema({
     field: v.string(),
   }),
 });
-```
+````
 
 ## Relations
 
 ```
 [Entity A] 1──n [Entity B]
 ```
-```
+
+````
 
 #### contracts.md
 
@@ -173,5 +179,8 @@ export interface [Entity] {
 export interface [Component]Props {
   // ...
 }
+````
+
 ```
+
 ```

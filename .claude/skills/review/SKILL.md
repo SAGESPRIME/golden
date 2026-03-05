@@ -1,10 +1,12 @@
 # Skill: Code Review
 
 ---
+
 name: review
 description: Fait une review du code modifie. Use when code has been changed or when the user wants feedback on code quality.
 argument-hint: [fichier|dossier] [--help]
 allowed-tools: Read, Glob, Grep, Bash
+
 ---
 
 ## Aide (--help)
@@ -67,6 +69,7 @@ Tu fais une review de code professionnelle et constructive pour Golden Defla.
 ## Problemes a corriger
 
 ### [Fichier 1]
+
 - **Ligne X** : [Description du probleme]
   **Suggestion** : [Comment corriger]
 
@@ -88,4 +91,4 @@ Tu fais une review de code professionnelle et constructive pour Golden Defla.
 - [ ] Stripe : pas de donnees carte stockees, webhook securise
 - [ ] Performance : pas de re-renders inutiles
 - [ ] Securite : pas d'injection, donnees validees
-- [ ] Accessibilite : labels, aria-*, focus
+- [ ] Accessibilite : labels, aria-\*, focus

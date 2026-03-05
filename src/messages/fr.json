@@ -1,6 +1,6 @@
 {
   "common": {
-    "siteName": "Golden Defla",
+    "siteName": "Miel France Bio",
     "loading": "Chargement...",
     "error": "Une erreur est survenue",
     "backToHome": "Retour a l'accueil"
@@ -14,8 +14,8 @@
   },
   "home": {
     "hero": {
-      "title": "Miel Premium d'Algerie",
-      "subtitle": "Decouvrez nos miels d'exception, recoltes avec soin dans les montagnes de Kabylie",
+      "title": "Miel bio francais certifie",
+      "subtitle": "Decouvrez nos miels d'exception, recoltes avec soin dans les terroirs de France",
       "cta": "Decouvrir nos miels"
     },
     "featured": {
@@ -68,12 +68,75 @@
     "postalCode": "Code postal",
     "country": "Pays",
     "phone": "Telephone",
-    "placeOrder": "Passer la commande"
+    "placeOrder": "Passer la commande",
+    "success": "Commande confirmee !",
+    "successMessage": "Merci pour votre commande. Vous recevrez un email de confirmation.",
+    "viewOrders": "Voir mes commandes"
   },
   "footer": {
-    "description": "Miel premium d'Algerie, recolte avec passion et tradition.",
+    "description": "Miel France Bio, maison francaise de miel biologique. Recolte, certifie, tracable.",
     "quickLinks": "Liens rapides",
     "contact": "Contact",
     "rights": "Tous droits reserves."
+  },
+  "auth": {
+    "login": "Connexion",
+    "signup": "Creer un compte",
+    "logout": "Deconnexion",
+    "email": "Email",
+    "password": "Mot de passe",
+    "name": "Nom",
+    "loginError": "Email ou mot de passe incorrect",
+    "signupError": "Erreur lors de la creation du compte",
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Deja un compte ?",
+    "userMenu": "Menu utilisateur"
+  },
+  "account": {
+    "title": "Mon Compte",
+    "profile": "Profil",
+    "orders": "Mes commandes",
+    "noOrders": "Vous n'avez pas encore de commande.",
+    "orderNumber": "Commande #{id}",
+    "orderDate": "Date",
+    "orderTotal": "Total",
+    "orderStatus": "Statut",
+    "items": "{count} article(s)"
+  },
+  "orderStatus": {
+    "pending": "En attente",
+    "paid": "Payee",
+    "shipped": "Expediee",
+    "delivered": "Livree",
+    "cancelled": "Annulee"
+  },
+  "admin": {
+    "title": "Administration",
+    "dashboard": "Tableau de bord",
+    "products": "Produits",
+    "orders": "Commandes",
+    "newProduct": "Nouveau produit",
+    "editProduct": "Modifier le produit",
+    "deleteProduct": "Supprimer",
+    "deleteConfirm": "Etes-vous sur de vouloir supprimer ce produit ?",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "nameFr": "Nom (FR)",
+    "nameAr": "Nom (AR)",
+    "descriptionFr": "Description (FR)",
+    "descriptionAr": "Description (AR)",
+    "slug": "Slug",
+    "price": "Prix (centimes)",
+    "compareAtPrice": "Prix barre (centimes)",
+    "images": "Images (URLs, une par ligne)",
+    "category": "Categorie",
+    "weight": "Poids (g)",
+    "inStock": "En stock",
+    "featured": "Vedette",
+    "updateStatus": "Modifier le statut",
+    "totalOrders": "Total commandes",
+    "totalProducts": "Total produits",
+    "totalRevenue": "Chiffre d'affaires",
+    "recentOrders": "Commandes recentes"
   }
 }

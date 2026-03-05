@@ -1,11 +1,13 @@
 # Skill: Project Constitution
 
 ---
+
 name: constitution
 description: Definit les principes architecturaux non-negociables du projet
 argument-hint: [--help] [--edit]
 allowed-tools: Read, Write, AskUserQuestion, Glob
 disable-model-invocation: true
+
 ---
 
 ## Aide (--help)

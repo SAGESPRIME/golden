@@ -25,14 +25,14 @@ Le site Golden Defla n'a actuellement aucune page produit. Les visiteurs ne peuv
 
 ### Questions posees
 
-| Question | Reponse |
-|----------|---------|
-| Utilisateurs ? | Visiteurs uniquement (pas de compte requis) |
-| Composants UI ? | Grille de cards + fiche produit avec galerie |
-| Categories ? | 3-5 categories (montagne, foret, fleurs, rare...) |
-| Ajout panier sur card ? | Oui, bouton rapide sur chaque card |
-| Images par produit ? | 1-3 images avec galerie sur la fiche |
-| Produits en rupture ? | Visibles avec badge "Rupture" + bouton desactive |
+| Question                | Reponse                                           |
+| ----------------------- | ------------------------------------------------- |
+| Utilisateurs ?          | Visiteurs uniquement (pas de compte requis)       |
+| Composants UI ?         | Grille de cards + fiche produit avec galerie      |
+| Categories ?            | 3-5 categories (montagne, foret, fleurs, rare...) |
+| Ajout panier sur card ? | Oui, bouton rapide sur chaque card                |
+| Images par produit ?    | 1-3 images avec galerie sur la fiche              |
+| Produits en rupture ?   | Visibles avec badge "Rupture" + bouton desactive  |
 
 ### Points a clarifier
 
@@ -75,6 +75,7 @@ Aucun point en suspens.
 En tant que visiteur, je veux voir la liste de tous les miels disponibles afin de decouvrir l'offre Golden Defla.
 
 **Criteres d'acceptation** :
+
 - [ ] Page accessible sur `/fr/products` et `/ar/products`
 - [ ] Grille responsive : 1 col mobile, 2 col tablette, 3 col desktop
 - [ ] Chaque card affiche : image, nom, prix, poids, categorie
@@ -86,6 +87,7 @@ En tant que visiteur, je veux voir la liste de tous les miels disponibles afin d
 - [ ] Compatible RTL
 
 **Notes techniques** :
+
 - Utiliser la query Convex `products.list` existante
 - Composant `ProductCard` dans `src/features/products/components/`
 - Utiliser les composants shadcn/ui `Card`, `Badge`
@@ -103,6 +105,7 @@ En tant que visiteur, je veux voir la liste de tous les miels disponibles afin d
 En tant que visiteur, je veux filtrer les miels par categorie afin de trouver rapidement le type de miel qui m'interesse.
 
 **Criteres d'acceptation** :
+
 - [ ] Barre de filtres au-dessus de la grille (boutons/onglets)
 - [ ] Option "Tous" pour afficher tout le catalogue
 - [ ] Un bouton par categorie existante
@@ -114,6 +117,7 @@ En tant que visiteur, je veux filtrer les miels par categorie afin de trouver ra
 - [ ] Compatible RTL
 
 **Notes techniques** :
+
 - Utiliser la query Convex `products.listByCategory` ou filtrer cote client
 - Composant `CategoryFilter` dans `src/features/products/components/`
 - Etat local avec `useState` (pas besoin de Zustand pour ca)
@@ -130,6 +134,7 @@ En tant que visiteur, je veux filtrer les miels par categorie afin de trouver ra
 En tant que visiteur, je veux consulter la fiche detaillee d'un miel afin de voir ses images, sa description et ses caracteristiques avant d'acheter.
 
 **Criteres d'acceptation** :
+
 - [ ] Page accessible sur `/fr/products/[slug]` et `/ar/products/[slug]`
 - [ ] Galerie d'images : image principale + miniatures cliquables
 - [ ] Nom, description, prix, poids, categorie affiches
@@ -142,6 +147,7 @@ En tant que visiteur, je veux consulter la fiche detaillee d'un miel afin de voi
 - [ ] Compatible RTL
 
 **Notes techniques** :
+
 - Utiliser la query Convex `products.getBySlug`
 - Composant `ProductDetail` dans `src/features/products/components/`
 - Composant `ImageGallery` dans `src/features/products/components/`
@@ -159,6 +165,7 @@ En tant que visiteur, je veux consulter la fiche detaillee d'un miel afin de voi
 En tant que visiteur, je veux ajouter un miel au panier depuis la card ou la fiche produit afin de preparer ma commande.
 
 **Criteres d'acceptation** :
+
 - [ ] Bouton "Ajouter au panier" sur chaque `ProductCard`
 - [ ] Bouton "Ajouter au panier" sur la fiche produit
 - [ ] Bouton desactive si produit en rupture de stock
@@ -170,6 +177,7 @@ En tant que visiteur, je veux ajouter un miel au panier depuis la card ou la fic
 - [ ] Compatible RTL
 
 **Notes techniques** :
+
 - Utiliser le hook `useCart()` existant et le store Zustand
 - Le header avec compteur panier sera un placeholder minimal (juste le compteur)
 - Composant toast ou notification simple pour le feedback
@@ -186,6 +194,7 @@ En tant que visiteur, je veux ajouter un miel au panier depuis la card ou la fic
 En tant que developpeur, je veux des donnees de produits de demo afin de pouvoir developper et tester le catalogue sans backend Convex connecte.
 
 **Criteres d'acceptation** :
+
 - [ ] Fichier de donnees seed avec 6-8 produits de demo
 - [ ] Variete de categories (3-5 differentes)
 - [ ] Mix de produits en stock et en rupture
@@ -197,6 +206,7 @@ En tant que developpeur, je veux des donnees de produits de demo afin de pouvoir
 - [ ] tests passent
 
 **Notes techniques** :
+
 - Fichier `src/features/products/data/seed.ts`
 - Hook `useProducts()` qui retourne seed data en fallback
 - Les seed data suivent exactement le schema Convex `products`
@@ -213,6 +223,7 @@ En tant que developpeur, je veux des donnees de produits de demo afin de pouvoir
 En tant que visiteur, je veux voir les miels vedettes sur la page d'accueil afin de decouvrir les produits phares sans aller sur le catalogue.
 
 **Criteres d'acceptation** :
+
 - [ ] Section "Nos miels vedettes" sur la homepage
 - [ ] Affiche 3-4 produits avec `featured: true`
 - [ ] Utilise le meme composant `ProductCard`
@@ -223,6 +234,7 @@ En tant que visiteur, je veux voir les miels vedettes sur la page d'accueil afin
 - [ ] Compatible RTL
 
 **Notes techniques** :
+
 - Composant `FeaturedProducts` dans `src/features/products/components/`
 - Utiliser la query `products.listFeatured` ou filtrer les seed data
 - Integrer dans la page `src/app/[locale]/page.tsx`

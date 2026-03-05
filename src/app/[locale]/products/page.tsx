@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: locale === 'ar' ? 'منتجاتنا' : 'Nos produits',
     description:
       locale === 'ar'
-        ? 'تصفح تشكيلتنا الكاملة من العسل الجزائري الفاخر.'
-        : 'Parcourez notre gamme complete de miels d\'Algerie premium.',
+        ? 'تصفح تشكيلتنا الكاملة من العسل الفرنسي العضوي.'
+        : 'Parcourez notre gamme complete de miels bio francais.',
     path: '/products',
     locale,
   });

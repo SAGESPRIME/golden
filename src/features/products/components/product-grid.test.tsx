@@ -11,8 +11,14 @@ vi.mock('next/image', () => ({
 }));
 
 vi.mock('next/link', () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string } & Record<string, unknown>) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: { children: React.ReactNode; href: string } & Record<string, unknown>) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
@@ -57,7 +63,9 @@ describe('ProductGrid', () => {
   });
 
   it('has responsive grid classes', () => {
-    const { container } = render(<ProductGrid products={mockProducts} locale="fr" />);
+    const { container } = render(
+      <ProductGrid products={mockProducts} locale="fr" />
+    );
     const grid = container.firstElementChild;
     expect(grid?.className).toContain('grid');
   });

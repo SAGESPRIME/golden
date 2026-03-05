@@ -12,8 +12,14 @@ vi.mock('next/image', () => ({
 }));
 
 vi.mock('next/link', () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string } & Record<string, unknown>) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: { children: React.ReactNode; href: string } & Record<string, unknown>) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
@@ -81,7 +87,9 @@ describe('ProductCard', () => {
   });
 
   it('applies opacity class when out of stock', () => {
-    const { container } = render(<ProductCard product={outOfStockProduct} locale="fr" />);
+    const { container } = render(
+      <ProductCard product={outOfStockProduct} locale="fr" />
+    );
     const card = container.firstElementChild;
     expect(card?.className).toContain('opacity');
   });
@@ -100,14 +108,26 @@ describe('ProductCard', () => {
 
   it('calls onAddToCart when button is clicked', async () => {
     const onAddToCart = vi.fn();
-    render(<ProductCard product={mockProduct} locale="fr" onAddToCart={onAddToCart} />);
+    render(
+      <ProductCard
+        product={mockProduct}
+        locale="fr"
+        onAddToCart={onAddToCart}
+      />
+    );
     const button = screen.getByRole('button');
     await userEvent.click(button);
     expect(onAddToCart).toHaveBeenCalledWith(mockProduct);
   });
 
   it('disables add to cart button when out of stock', () => {
-    render(<ProductCard product={outOfStockProduct} locale="fr" onAddToCart={vi.fn()} />);
+    render(
+      <ProductCard
+        product={outOfStockProduct}
+        locale="fr"
+        onAddToCart={vi.fn()}
+      />
+    );
     const button = screen.getByRole('button');
     expect(button).toBeDisabled();
   });

@@ -18,7 +18,7 @@ describe('CategoryFilter', () => {
         activeCategory="all"
         onCategoryChange={vi.fn()}
         locale="fr"
-      />,
+      />
     );
     expect(screen.getByText('Tous')).toBeInTheDocument();
     expect(screen.getByText('Miel de montagne')).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe('CategoryFilter', () => {
         activeCategory="all"
         onCategoryChange={vi.fn()}
         locale="ar"
-      />,
+      />
     );
     expect(screen.getByText('الكل')).toBeInTheDocument();
     expect(screen.getByText('عسل الجبال')).toBeInTheDocument();
@@ -45,10 +45,13 @@ describe('CategoryFilter', () => {
         activeCategory="mountain"
         onCategoryChange={vi.fn()}
         locale="fr"
-      />,
+      />
     );
     const activeButton = screen.getByText('Miel de montagne');
-    expect(activeButton.closest('button')).toHaveAttribute('data-variant', 'default');
+    expect(activeButton.closest('button')).toHaveAttribute(
+      'data-variant',
+      'default'
+    );
   });
 
   it('calls onCategoryChange when a category is clicked', async () => {
@@ -59,7 +62,7 @@ describe('CategoryFilter', () => {
         activeCategory="all"
         onCategoryChange={onCategoryChange}
         locale="fr"
-      />,
+      />
     );
     await userEvent.click(screen.getByText('Miel de montagne'));
     expect(onCategoryChange).toHaveBeenCalledWith('mountain' as CategoryKey);

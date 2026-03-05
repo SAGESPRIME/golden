@@ -18,7 +18,9 @@ describe('seedProducts', () => {
   });
 
   it('has at least 3 different categories', () => {
-    const categories = new Set(seedProducts.map((p: SeedProduct) => p.category));
+    const categories = new Set(
+      seedProducts.map((p: SeedProduct) => p.category)
+    );
     expect(categories.size).toBeGreaterThanOrEqual(3);
   });
 

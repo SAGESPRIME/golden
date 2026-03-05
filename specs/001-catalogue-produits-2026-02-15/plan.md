@@ -83,39 +83,39 @@ src/
 
 ## Fichiers a creer
 
-| Fichier | Description | US |
-|---------|-------------|-----|
-| `src/features/products/data/seed.ts` | 6-8 produits de demo bilingues | US-005 |
-| `src/features/products/types.ts` | Types specifiques (SeedProduct, Category) | US-005 |
-| `src/features/products/hooks/use-products.ts` | Hook avec seed fallback | US-005 |
-| `src/features/products/hooks/use-products.test.ts` | Tests hook | US-005 |
-| `src/features/products/components/product-card.tsx` | Card produit | US-001 |
-| `src/features/products/components/product-card.test.tsx` | Tests card | US-001 |
-| `src/features/products/components/product-grid.tsx` | Grille responsive | US-001 |
-| `src/features/products/components/product-grid.test.tsx` | Tests grille | US-001 |
-| `src/app/[locale]/products/page.tsx` | Page listing | US-001 |
-| `src/features/products/components/category-filter.tsx` | Filtres categorie | US-002 |
-| `src/features/products/components/category-filter.test.tsx` | Tests filtres | US-002 |
-| `src/features/products/components/image-gallery.tsx` | Galerie images | US-003 |
-| `src/features/products/components/image-gallery.test.tsx` | Tests galerie | US-003 |
-| `src/features/products/components/product-detail.tsx` | Detail produit | US-003 |
-| `src/features/products/components/product-detail.test.tsx` | Tests detail | US-003 |
-| `src/app/[locale]/products/[slug]/page.tsx` | Page fiche produit | US-003 |
-| `src/features/products/components/add-to-cart-button.tsx` | Bouton panier | US-004 |
-| `src/features/products/components/add-to-cart-button.test.tsx` | Tests bouton | US-004 |
-| `src/components/layout/header.tsx` | Header avec compteur panier | US-004 |
-| `src/features/products/components/featured-products.tsx` | Section vedettes | US-006 |
-| `src/features/products/components/featured-products.test.tsx` | Tests vedettes | US-006 |
-| `src/features/products/index.ts` | Exports publics du module | US-001 |
+| Fichier                                                        | Description                               | US     |
+| -------------------------------------------------------------- | ----------------------------------------- | ------ |
+| `src/features/products/data/seed.ts`                           | 6-8 produits de demo bilingues            | US-005 |
+| `src/features/products/types.ts`                               | Types specifiques (SeedProduct, Category) | US-005 |
+| `src/features/products/hooks/use-products.ts`                  | Hook avec seed fallback                   | US-005 |
+| `src/features/products/hooks/use-products.test.ts`             | Tests hook                                | US-005 |
+| `src/features/products/components/product-card.tsx`            | Card produit                              | US-001 |
+| `src/features/products/components/product-card.test.tsx`       | Tests card                                | US-001 |
+| `src/features/products/components/product-grid.tsx`            | Grille responsive                         | US-001 |
+| `src/features/products/components/product-grid.test.tsx`       | Tests grille                              | US-001 |
+| `src/app/[locale]/products/page.tsx`                           | Page listing                              | US-001 |
+| `src/features/products/components/category-filter.tsx`         | Filtres categorie                         | US-002 |
+| `src/features/products/components/category-filter.test.tsx`    | Tests filtres                             | US-002 |
+| `src/features/products/components/image-gallery.tsx`           | Galerie images                            | US-003 |
+| `src/features/products/components/image-gallery.test.tsx`      | Tests galerie                             | US-003 |
+| `src/features/products/components/product-detail.tsx`          | Detail produit                            | US-003 |
+| `src/features/products/components/product-detail.test.tsx`     | Tests detail                              | US-003 |
+| `src/app/[locale]/products/[slug]/page.tsx`                    | Page fiche produit                        | US-003 |
+| `src/features/products/components/add-to-cart-button.tsx`      | Bouton panier                             | US-004 |
+| `src/features/products/components/add-to-cart-button.test.tsx` | Tests bouton                              | US-004 |
+| `src/components/layout/header.tsx`                             | Header avec compteur panier               | US-004 |
+| `src/features/products/components/featured-products.tsx`       | Section vedettes                          | US-006 |
+| `src/features/products/components/featured-products.test.tsx`  | Tests vedettes                            | US-006 |
+| `src/features/products/index.ts`                               | Exports publics du module                 | US-001 |
 
 ## Fichiers a modifier
 
-| Fichier | Modification | Raison |
-|---------|--------------|--------|
-| `src/messages/fr.json` | Ajouter cles `products.*`, `categories.*` | Traductions filtres, detail, stock |
-| `src/messages/ar.json` | Ajouter cles `products.*`, `categories.*` | Traductions AR |
-| `src/app/[locale]/page.tsx` | Integrer `FeaturedProducts` | Section vedettes homepage |
-| `src/app/[locale]/layout.tsx` | Ajouter `Header` | Navigation + compteur panier |
+| Fichier                       | Modification                              | Raison                             |
+| ----------------------------- | ----------------------------------------- | ---------------------------------- |
+| `src/messages/fr.json`        | Ajouter cles `products.*`, `categories.*` | Traductions filtres, detail, stock |
+| `src/messages/ar.json`        | Ajouter cles `products.*`, `categories.*` | Traductions AR                     |
+| `src/app/[locale]/page.tsx`   | Integrer `FeaturedProducts`               | Section vedettes homepage          |
+| `src/app/[locale]/layout.tsx` | Ajouter `Header`                          | Navigation + compteur panier       |
 
 ## Dependances
 

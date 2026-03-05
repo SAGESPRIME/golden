@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
 import { FeaturedProducts } from '@/features/products/components/featured-products';
+import {
+  HeroSection,
+  TrustStats,
+  CategoryGrid,
+  StorySection,
+  TestimonialsSection,
+  ServicesStrip,
+} from '@/features/home';
 import {
   generatePageMetadata,
   generateOrganizationSchema,
@@ -17,12 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title:
       locale === 'ar'
-        ? 'عسل جزائري فاخر'
-        : 'Miel premium d\'Algerie',
+        ? 'Golden Defla — عسل جزائري فاخر'
+        : 'Golden Defla — Miel alg\u00E9rien premium',
     description:
       locale === 'ar'
-        ? 'اكتشف تشكيلتنا من العسل الجزائري الفاخر، يُحصد بشغف وتقاليد عريقة.'
-        : 'Decouvrez notre selection de miels d\'Algerie, recoltes avec passion et tradition.',
+        ? 'اكتشف تشكيلتنا من العسل الجزائري الفاخر، يُحصد بشغف وتقاليد عريقة في جبال الجزائر.'
+        : "D\u00E9couvrez notre s\u00E9lection de miels alg\u00E9riens premium, r\u00E9colt\u00E9s avec passion dans les montagnes d'Alg\u00E9rie.",
     path: '',
     locale,
   });
@@ -40,36 +46,15 @@ export default async function HomePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
       />
-      <HomeContent locale={locale} />
+      <main className="flex flex-col">
+        <HeroSection locale={locale} />
+        <TrustStats locale={locale} />
+        <CategoryGrid locale={locale} />
+        <FeaturedProducts locale={locale} />
+        <TestimonialsSection locale={locale} />
+        <StorySection locale={locale} />
+        <ServicesStrip locale={locale} />
+      </main>
     </>
-  );
-}
-
-function HomeContent({ locale }: { locale: string }) {
-  const t = useTranslations('home');
-
-  return (
-    <main className="flex flex-col">
-      <section className="flex min-h-[60vh] flex-col items-center justify-center p-8">
-        <div className="text-center space-y-6">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
-            {t('hero.title')}
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('hero.subtitle')}
-          </p>
-          <div className="mt-8">
-            <Link
-              href={`/${locale}/products`}
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-            >
-              {t('hero.cta')}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <FeaturedProducts locale={locale} />
-    </main>
   );
 }

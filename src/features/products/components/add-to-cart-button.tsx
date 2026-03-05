@@ -12,7 +12,11 @@ export interface AddToCartButtonProps {
   size?: 'sm' | 'default' | 'lg';
 }
 
-export function AddToCartButton({ product, locale, size = 'default' }: AddToCartButtonProps) {
+export function AddToCartButton({
+  product,
+  locale,
+  size = 'default',
+}: AddToCartButtonProps) {
   const { addItem } = useCart();
   const isRtl = locale === 'ar';
 

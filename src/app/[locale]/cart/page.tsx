@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description:
       locale === 'ar'
         ? 'استعرض سلة التسوق الخاصة بك.'
-        : 'Consultez votre panier d\'achat.',
+        : "Consultez votre panier d'achat.",
     path: '/cart',
     locale,
   });

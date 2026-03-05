@@ -16,12 +16,7 @@ export interface SeedProduct {
 }
 
 /** Cle de categorie */
-export type CategoryKey =
-  | 'mountain'
-  | 'forest'
-  | 'flower'
-  | 'rare'
-  | 'organic';
+export type CategoryKey = 'mountain' | 'forest' | 'flower' | 'rare' | 'organic';
 
 /** Categorie avec label traduit */
 export interface Category {

@@ -1,11 +1,13 @@
 # Skill: Ralph Launcher
 
 ---
+
 name: ralph
 description: Convertit PRD+Plan en prd.json et lance la boucle autonome Ralph
 argument-hint: [--dry-run] [--help]
 allowed-tools: Read, Write, Glob, Bash
 disable-model-invocation: true
+
 ---
 
 ## Aide (--help)
@@ -45,6 +47,7 @@ WORKFLOW
 ### Workflow
 
 1. **Detecter le dernier dossier spec**
+
    ```bash
    ls -d specs/[0-9]*/ | sort -r | head -1
    ```
@@ -79,11 +82,7 @@ WORKFLOW
   "spec": "specs/XXX-feature-date",
   "plan": "specs/XXX-feature-date/plan.md",
   "validation": {
-    "preCommit": [
-      "npm run typecheck",
-      "npm run lint",
-      "npx vitest run"
-    ],
+    "preCommit": ["npm run typecheck", "npm run lint", "npx vitest run"],
     "checklist": [
       "Tests ecrits",
       "Pas de any",
@@ -112,12 +111,12 @@ WORKFLOW
 
 ### Status des stories
 
-| Status | Description |
-|--------|-------------|
-| `pending` | Pas encore commencee |
-| `in_progress` | En cours d'implementation |
-| `completed` | Implementee et testee |
-| `failed` | Echec (tests ne passent pas) |
+| Status        | Description                  |
+| ------------- | ---------------------------- |
+| `pending`     | Pas encore commencee         |
+| `in_progress` | En cours d'implementation    |
+| `completed`   | Implementee et testee        |
+| `failed`      | Echec (tests ne passent pas) |
 
 ### Option --pr (creation manuelle de PR)
 

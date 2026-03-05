@@ -9,11 +9,17 @@ export interface ProductGridProps {
   onAddToCart?: (product: SeedProduct) => void;
 }
 
-export function ProductGrid({ products, locale, onAddToCart }: ProductGridProps) {
+export function ProductGrid({
+  products,
+  locale,
+  onAddToCart,
+}: ProductGridProps) {
   if (products.length === 0) {
     return (
       <p className="text-center text-muted-foreground py-12">
-        {locale === 'ar' ? 'لا توجد منتجات في هذه الفئة' : 'Aucun produit dans cette categorie'}
+        {locale === 'ar'
+          ? 'لا توجد منتجات في هذه الفئة'
+          : 'Aucun produit dans cette categorie'}
       </p>
     );
   }

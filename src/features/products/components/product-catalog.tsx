@@ -20,7 +20,9 @@ const CATEGORIES: Category[] = [
 export function ProductCatalog({ locale }: { locale: string }) {
   const { products } = useProducts();
   const { addItem } = useCart();
-  const [activeCategory, setActiveCategory] = useState<CategoryKey | 'all'>('all');
+  const [activeCategory, setActiveCategory] = useState<CategoryKey | 'all'>(
+    'all'
+  );
 
   const handleAddToCart = (product: SeedProduct) => {
     addItem({
@@ -29,7 +31,9 @@ export function ProductCatalog({ locale }: { locale: string }) {
       price: product.price,
       image: product.images[0],
     });
-    toast.success(locale === 'ar' ? 'تمت الإضافة إلى السلة' : 'Produit ajoute au panier');
+    toast.success(
+      locale === 'ar' ? 'تمت الإضافة إلى السلة' : 'Produit ajoute au panier'
+    );
   };
 
   const filteredProducts = useMemo(() => {
@@ -40,7 +44,7 @@ export function ProductCatalog({ locale }: { locale: string }) {
   const availableCategories = useMemo(() => {
     const productCategories = new Set(products.map((p) => p.category));
     return CATEGORIES.filter(
-      (cat) => cat.key === 'all' || productCategories.has(cat.key),
+      (cat) => cat.key === 'all' || productCategories.has(cat.key)
     );
   }, [products]);
 
@@ -52,7 +56,11 @@ export function ProductCatalog({ locale }: { locale: string }) {
         onCategoryChange={setActiveCategory}
         locale={locale}
       />
-      <ProductGrid products={filteredProducts} locale={locale} onAddToCart={handleAddToCart} />
+      <ProductGrid
+        products={filteredProducts}
+        locale={locale}
+        onAddToCart={handleAddToCart}
+      />
     </>
   );
 }

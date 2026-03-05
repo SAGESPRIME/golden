@@ -1,6 +1,6 @@
 {
   "common": {
-    "siteName": "قولدن دفلى",
+    "siteName": "ميال فرانس بيو",
     "loading": "جار التحميل...",
     "error": "حدث خطأ",
     "backToHome": "العودة إلى الصفحة الرئيسية"
@@ -14,8 +14,8 @@
   },
   "home": {
     "hero": {
-      "title": "عسل فاخر من الجزائر",
-      "subtitle": "اكتشفوا عسلنا الاستثنائي، المجموع بعناية من جبال القبائل",
+      "title": "عسل فرنسي عضوي معتمد",
+      "subtitle": "اكتشفوا عسلنا الاستثنائي، يُحصد بعناية من أجمل المناطق الفرنسية",
       "cta": "اكتشف عسلنا"
     },
     "featured": {
@@ -68,12 +68,75 @@
     "postalCode": "الرمز البريدي",
     "country": "البلد",
     "phone": "الهاتف",
-    "placeOrder": "تأكيد الطلب"
+    "placeOrder": "تأكيد الطلب",
+    "success": "تم تأكيد الطلب!",
+    "successMessage": "شكرا لطلبك. ستتلقى رسالة تأكيد عبر البريد الإلكتروني.",
+    "viewOrders": "عرض طلباتي"
   },
   "footer": {
-    "description": "عسل فاخر من الجزائر، يُجمع بشغف وتقاليد عريقة.",
+    "description": "ميال فرانس بيو، عسل فرنسي عضوي معتمد. محصود، معتمد، قابل للتتبع.",
     "quickLinks": "روابط سريعة",
     "contact": "اتصل بنا",
     "rights": "جميع الحقوق محفوظة."
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "name": "الاسم",
+    "loginError": "بريد إلكتروني أو كلمة مرور غير صحيحة",
+    "signupError": "خطأ في إنشاء الحساب",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "userMenu": "قائمة المستخدم"
+  },
+  "account": {
+    "title": "حسابي",
+    "profile": "الملف الشخصي",
+    "orders": "طلباتي",
+    "noOrders": "ليس لديك طلبات بعد.",
+    "orderNumber": "طلب #{id}",
+    "orderDate": "التاريخ",
+    "orderTotal": "المجموع",
+    "orderStatus": "الحالة",
+    "items": "{count} عنصر"
+  },
+  "orderStatus": {
+    "pending": "قيد الانتظار",
+    "paid": "مدفوع",
+    "shipped": "تم الشحن",
+    "delivered": "تم التوصيل",
+    "cancelled": "ملغى"
+  },
+  "admin": {
+    "title": "الإدارة",
+    "dashboard": "لوحة التحكم",
+    "products": "المنتجات",
+    "orders": "الطلبات",
+    "newProduct": "منتج جديد",
+    "editProduct": "تعديل المنتج",
+    "deleteProduct": "حذف",
+    "deleteConfirm": "هل أنت متأكد من حذف هذا المنتج؟",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "nameFr": "الاسم (FR)",
+    "nameAr": "الاسم (AR)",
+    "descriptionFr": "الوصف (FR)",
+    "descriptionAr": "الوصف (AR)",
+    "slug": "Slug",
+    "price": "السعر (سنتيم)",
+    "compareAtPrice": "السعر المشطوب (سنتيم)",
+    "images": "الصور (روابط، واحد في كل سطر)",
+    "category": "الفئة",
+    "weight": "الوزن (غ)",
+    "inStock": "متوفر",
+    "featured": "مميز",
+    "updateStatus": "تحديث الحالة",
+    "totalOrders": "إجمالي الطلبات",
+    "totalProducts": "إجمالي المنتجات",
+    "totalRevenue": "الإيرادات",
+    "recentOrders": "الطلبات الأخيرة"
   }
 }

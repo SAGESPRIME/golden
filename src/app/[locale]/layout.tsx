@@ -1,12 +1,25 @@
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
+import { DM_Sans, Playfair_Display } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { Providers } from './providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/sonner';
 import '@/app/globals.css';
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+});
 
 type Props = {
   children: React.ReactNode;
@@ -30,7 +43,9 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html lang={locale} dir={direction} suppressHydrationWarning>
-      <body className="flex min-h-screen flex-col bg-background font-sans antialiased">
+      <body
+        className={`${dmSans.variable} ${playfair.variable} flex min-h-screen flex-col bg-background font-sans antialiased`}
+      >
         <NextIntlClientProvider>
           <Providers>
             <Header locale={locale} />

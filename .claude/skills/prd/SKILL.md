@@ -1,11 +1,13 @@
 # Skill: PRD Generator
 
 ---
+
 name: prd
 description: Genere un PRD detaille avec clarifications et user stories
 argument-hint: [description] [--help]
 allowed-tools: Read, Write, AskUserQuestion, Glob, Grep
 disable-model-invocation: true
+
 ---
 
 ## Aide (--help)
@@ -91,12 +93,15 @@ Tu generes un PRD structure en forcant les clarifications.
 ## Contexte
 
 ### Utilisateurs cibles
+
 [Qui utilise cette feature]
 
 ### Probleme a resoudre
+
 [Quel probleme on resout]
 
 ### Objectifs
+
 - [Objectif 1]
 - [Objectif 2]
 
@@ -104,11 +109,11 @@ Tu generes un PRD structure en forcant les clarifications.
 
 ### Questions posees
 
-| Question | Reponse |
-|----------|---------|
+| Question       | Reponse   |
+| -------------- | --------- |
 | Utilisateurs ? | [Reponse] |
-| Cas d'usage ? | [Reponse] |
-| Contraintes ? | [Reponse] |
+| Cas d'usage ?  | [Reponse] |
+| Contraintes ?  | [Reponse] |
 
 ### Points a clarifier
 
@@ -117,9 +122,11 @@ Tu generes un PRD structure en forcant les clarifications.
 ## Perimetre
 
 ### Inclus
+
 - [Ce qui est inclus]
 
 ### Exclus
+
 - [Ce qui n'est PAS inclus]
 
 ## User Stories
@@ -134,6 +141,7 @@ Tu generes un PRD structure en forcant les clarifications.
 En tant que [utilisateur], je veux [action] afin de [benefice].
 
 **Criteres d'acceptation** :
+
 - [ ] [Critere fonctionnel 1]
 - [ ] [Critere fonctionnel 2]
 - [ ] typecheck passe

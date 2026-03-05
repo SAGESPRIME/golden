@@ -4,23 +4,23 @@ E-commerce bilingue (Francais/Arabe) de miel premium algerien. Application fulls
 
 ## Stack
 
-| Technologie | Version | Usage |
-|-------------|---------|-------|
-| Next.js | 16.x | Framework React (App Router) |
-| React | 19.x | UI Library |
-| TypeScript | 5.x | Langage (strict mode) |
-| Tailwind CSS | 4.x | Styling (utility-first) |
-| shadcn/ui | latest | Composants UI (theme Energy) |
-| Zustand | 5.x | State management (panier) |
-| Convex | 1.x | BaaS (base de donnees, fonctions, temps reel) |
-| Convex Auth | 0.x | Authentification |
-| Stripe | 20.x | Paiement (Checkout Session) |
-| next-intl | 4.x | Internationalisation (FR + AR) |
-| next-themes | 0.x | Dark mode |
-| Vitest | 4.x | Tests unitaires |
-| React Testing Library | 16.x | Tests composants |
-| Zod | 4.x | Validation schemas |
-| Lucide React | 0.564.x | Icons |
+| Technologie           | Version | Usage                                         |
+| --------------------- | ------- | --------------------------------------------- |
+| Next.js               | 16.x    | Framework React (App Router)                  |
+| React                 | 19.x    | UI Library                                    |
+| TypeScript            | 5.x     | Langage (strict mode)                         |
+| Tailwind CSS          | 4.x     | Styling (utility-first)                       |
+| shadcn/ui             | latest  | Composants UI (theme Energy)                  |
+| Zustand               | 5.x     | State management (panier)                     |
+| Convex                | 1.x     | BaaS (base de donnees, fonctions, temps reel) |
+| Convex Auth           | 0.x     | Authentification                              |
+| Stripe                | 20.x    | Paiement (Checkout Session)                   |
+| next-intl             | 4.x     | Internationalisation (FR + AR)                |
+| next-themes           | 0.x     | Dark mode                                     |
+| Vitest                | 4.x     | Tests unitaires                               |
+| React Testing Library | 16.x    | Tests composants                              |
+| Zod                   | 4.x     | Validation schemas                            |
+| Lucide React          | 0.564.x | Icons                                         |
 
 ## Structure du projet
 
@@ -102,16 +102,16 @@ golden-defla/
 
 ## Commandes
 
-| Commande | Description |
-|----------|-------------|
-| `npm run dev` | Serveur de developpement (localhost:3000) |
-| `npm run build` | Build de production |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier |
-| `npm run test` | Tests Vitest |
-| `npm run typecheck` | Verification TypeScript (`tsc --noEmit`) |
-| `npx convex dev` | Convex en mode developpement |
-| `npx convex deploy` | Deployer Convex en production |
+| Commande            | Description                               |
+| ------------------- | ----------------------------------------- |
+| `npm run dev`       | Serveur de developpement (localhost:3000) |
+| `npm run build`     | Build de production                       |
+| `npm run lint`      | ESLint                                    |
+| `npm run format`    | Prettier                                  |
+| `npm run test`      | Tests Vitest                              |
+| `npm run typecheck` | Verification TypeScript (`tsc --noEmit`)  |
+| `npx convex dev`    | Convex en mode developpement              |
+| `npx convex deploy` | Deployer Convex en production             |
 
 ## Design System
 
@@ -249,6 +249,7 @@ const name = locale === 'ar' ? product.name.ar : product.name.fr;
 ### Seed data (`src/features/products/data/seed.ts`)
 
 7 produits de miel algerien bilingues FR/AR :
+
 - Miel de Jijel (mountain, featured)
 - Miel de Foret de Chrea (forest, featured, promo)
 - Miel de Fleurs de Kabylie (flower)
@@ -259,33 +260,35 @@ const name = locale === 'ar' ? product.name.ar : product.name.fr;
 
 ### Categories
 
-| Cle | FR | AR |
-|-----|----|----|
-| `mountain` | Miel de montagne | عسل الجبال |
-| `forest` | Miel de foret | عسل الغابة |
-| `flower` | Miel de fleurs | عسل الأزهار |
-| `rare` | Miel rare | عسل نادر |
-| `organic` | Miel bio | عسل عضوي |
+| Cle        | FR               | AR          |
+| ---------- | ---------------- | ----------- |
+| `mountain` | Miel de montagne | عسل الجبال  |
+| `forest`   | Miel de foret    | عسل الغابة  |
+| `flower`   | Miel de fleurs   | عسل الأزهار |
+| `rare`     | Miel rare        | عسل نادر    |
+| `organic`  | Miel bio         | عسل عضوي    |
 
 ### Schema Convex (`convex/schema.ts`)
 
 3 tables definies :
+
 - **products** : nom bilingue, slug, prix (centimes), images, categorie, poids, stock, featured
 - **users** : name, email, role (customer/admin), tokenIdentifier
 - **orders** : userId, items[], totalAmount, status, stripeSessionId, shippingAddress
 
 ### Queries Convex (`convex/products.ts`)
 
-| Query | Args | Retour |
-|-------|------|--------|
-| `products.list` | - | `Product[]` |
-| `products.listFeatured` | - | `Product[]` |
-| `products.getBySlug` | `{ slug }` | `Product \| null` |
-| `products.listByCategory` | `{ category }` | `Product[]` |
+| Query                     | Args           | Retour            |
+| ------------------------- | -------------- | ----------------- |
+| `products.list`           | -              | `Product[]`       |
+| `products.listFeatured`   | -              | `Product[]`       |
+| `products.getBySlug`      | `{ slug }`     | `Product \| null` |
+| `products.listByCategory` | `{ category }` | `Product[]`       |
 
 ### Panier (Zustand `src/stores/cart-store.ts`)
 
 Store persiste dans localStorage (`golden-defla-cart`) :
+
 - `addItem(item)` : ajoute ou incremente quantite
 - `removeItem(productId)` : supprime du panier
 - `updateQuantity(productId, qty)` : modifie quantite (supprime si <= 0)
@@ -424,24 +427,24 @@ Editer `src/features/products/data/seed.ts` (temporaire, sera migre vers Convex)
 
 ### Skills disponibles
 
-| Skill | Description |
-|-------|-------------|
-| `/start` | Point d'entree : detecte l'etat et guide |
-| `/init` | Initialiser le projet |
-| `/constitution` | Definir les principes du projet |
-| `/prd [description]` | Creer un PRD |
-| `/plan` | Creer le plan technique |
-| `/ralph` | Lancer l'implementation autonome |
-| `/review` | Review du code |
-| `/test` | Lancer et analyser les tests |
-| `/fix [erreur]` | Corriger une erreur |
+| Skill                | Description                              |
+| -------------------- | ---------------------------------------- |
+| `/start`             | Point d'entree : detecte l'etat et guide |
+| `/init`              | Initialiser le projet                    |
+| `/constitution`      | Definir les principes du projet          |
+| `/prd [description]` | Creer un PRD                             |
+| `/plan`              | Creer le plan technique                  |
+| `/ralph`             | Lancer l'implementation autonome         |
+| `/review`            | Review du code                           |
+| `/test`              | Lancer et analyser les tests             |
+| `/fix [erreur]`      | Corriger une erreur                      |
 
 ## Agents (subagents)
 
-| Agent | Modele | Description |
-|-------|--------|-------------|
+| Agent                 | Modele | Description                                                    |
+| --------------------- | ------ | -------------------------------------------------------------- |
 | `fullstack-architect` | sonnet | Architecture Next.js + Convex, routing, performance, i18n, RTL |
-| `git-workflow` | sonnet | Branches, PR, merges, releases |
+| `git-workflow`        | sonnet | Branches, PR, merges, releases                                 |
 
 ## Regles
 
@@ -450,4 +453,4 @@ Editer `src/features/products/data/seed.ts` (temporaire, sera migre vers Convex)
 
 ---
 
-*Derniere mise a jour : Fevrier 2026*
+_Derniere mise a jour : Fevrier 2026_

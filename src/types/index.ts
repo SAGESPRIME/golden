@@ -29,7 +29,8 @@ export interface CartItem {
 
 export interface Order {
   _id: string;
-  userId: string;
+  userId?: string;
+  email?: string;
   items: CartItem[];
   totalAmount: number;
   status: 'pending' | 'paid' | 'shipped' | 'delivered' | 'cancelled';
@@ -49,7 +50,8 @@ export interface ShippingAddress {
 
 export interface User {
   _id: string;
-  name: string;
-  email: string;
-  role: 'customer' | 'admin';
+  name?: string;
+  email?: string;
+  image?: string;
+  role?: 'customer' | 'admin';
 }

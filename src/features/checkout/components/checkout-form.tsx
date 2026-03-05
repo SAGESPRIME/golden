@@ -5,7 +5,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { shippingAddressSchema, type ShippingAddressFormData } from '@/lib/validators';
+import {
+  shippingAddressSchema,
+  type ShippingAddressFormData,
+} from '@/lib/validators';
 
 interface CheckoutFormProps {
   locale: string;
@@ -22,7 +25,11 @@ const FIELDS = [
   { name: 'phone' as const, fr: 'Telephone', ar: 'الهاتف' },
 ] as const;
 
-export function CheckoutForm({ locale, onSubmit, isSubmitting }: CheckoutFormProps) {
+export function CheckoutForm({
+  locale,
+  onSubmit,
+  isSubmitting,
+}: CheckoutFormProps) {
   const isRtl = locale === 'ar';
   const {
     register,
@@ -45,16 +52,27 @@ export function CheckoutForm({ locale, onSubmit, isSubmitting }: CheckoutFormPro
               aria-label={label}
               aria-invalid={!!errors[field.name]}
             />
-            {errors[field.name] && (
-              <p className="text-sm text-destructive">{errors[field.name]?.message}</p>
-            )}
+            {errors[field.name] ? (
+              <p className="text-sm text-destructive">
+                {errors[field.name]?.message}
+              </p>
+            ) : null}
           </div>
         );
       })}
-      <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+      <Button
+        type="submit"
+        className="w-full"
+        size="lg"
+        disabled={isSubmitting}
+      >
         {isSubmitting
-          ? (isRtl ? 'جار المعالجة...' : 'Traitement...')
-          : (isRtl ? 'تأكيد الطلب' : 'Passer la commande')}
+          ? isRtl
+            ? 'جار المعالجة...'
+            : 'Traitement...'
+          : isRtl
+            ? 'تأكيد الطلب'
+            : 'Passer la commande'}
       </Button>
     </form>
   );

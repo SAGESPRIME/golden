@@ -1,10 +1,12 @@
 # Skill: Project Initializer
 
 ---
+
 name: init
 description: Initialise le projet Golden Defla (dependances, configuration, verification). Use when starting a new project or after cloning.
 argument-hint: [--help]
 allowed-tools: Read, Write, Bash, Glob
+
 ---
 
 ## Aide (--help)
@@ -41,12 +43,14 @@ Tu initialises le projet Golden Defla pour qu'il soit pret a l'emploi.
 ### Etapes
 
 1. **Verifier les prerequis**
+
    ```bash
    node --version  # Doit etre >= 18
    npm --version
    ```
 
 2. **Installer les dependances**
+
    ```bash
    npm install
    ```
@@ -58,17 +62,20 @@ Tu initialises le projet Golden Defla pour qu'il soit pret a l'emploi.
    - Convex : `convex/` dossier existe
 
 4. **Initialiser Convex** (si pas deja fait)
+
    ```bash
    npx convex dev
    ```
 
 5. **Lancer les verifications**
+
    ```bash
    npm run lint
    npm run typecheck
    ```
 
 6. **Afficher le resume**
+
    ```
    Projet Golden Defla initialise !
 
