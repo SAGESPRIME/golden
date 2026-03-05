@@ -19,13 +19,13 @@ export function StorySection({ locale }: StorySectionProps) {
             </p>
             <h2 className="font-[var(--font-display)] text-3xl md:text-4xl font-bold leading-tight">
               {isRtl
-                ? 'العسل الجزائري، كنز من الطبيعة'
-                : 'Le miel alg\u00E9rien, un tr\u00E9sor de la ruche'}
+                ? 'العسل الفرنسي البيو، كنز من الطبيعة'
+                : 'Le miel bio français, un trésor de la ruche'}
             </h2>
             <p className="text-muted-foreground leading-relaxed">
               {isRtl
-                ? 'يعمل شركاؤنا من المربين في جبال الجزائر على الحفاظ على الممارسات التقليدية التي توارثوها عن أجدادهم. كل وعاء عسل يحكي قصة أرض، موسم، ونحلة.'
-                : 'Nos apiculteurs partenaires en Alg\u00E9rie perp\u00E9tuent des pratiques ancestrales transmises de g\u00E9n\u00E9ration en g\u00E9n\u00E9ration. Chaque pot de miel raconte l\u2019histoire d\u2019un terroir, d\u2019une saison, d\u2019une abeille.'}
+                ? 'يعمل شركاؤنا من المربين في أجمل مناطق فرنسا على الحفاظ على الممارسات التقليدية التي توارثوها عن أجدادهم. كل وعاء عسل يحكي قصة أرض، موسم، ونحلة.'
+                : "Nos apiculteurs partenaires à travers la France perpétuent des pratiques ancestrales transmises de génération en génération. Chaque pot de miel raconte l'histoire d'un terroir, d'une saison, d'une abeille."}
             </p>
             <p className="text-muted-foreground leading-relaxed">
               {isRtl
@@ -40,14 +40,16 @@ export function StorySection({ locale }: StorySectionProps) {
             </Link>
           </div>
 
-          <div
-            className={`flex items-center justify-center ${isRtl ? 'md:order-1' : ''}`}
-          >
-            <div className="relative w-full max-w-sm aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-gold-200 to-gold-400 flex items-center justify-center shadow-xl">
-              <span className="text-[100px] md:text-[140px] select-none">
-                🍯
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-t from-warm-brown/20 to-transparent" />
+          <div className={`w-full ${isRtl ? 'md:order-1' : ''}`}>
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <iframe
+                loading="lazy"
+                title="Gumlet video player"
+                src="https://play.gumlet.io/embed/69963cb53151985919afa2a5?background=false&autoplay=false&loop=true&disable_player_controls=false"
+                className="absolute inset-0 w-full h-full border-0"
+                referrerPolicy="origin"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+              />
             </div>
           </div>
         </div>

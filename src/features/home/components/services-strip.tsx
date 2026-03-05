@@ -15,7 +15,7 @@ const SERVICES_FR = [
     title: 'Paiement s\u00E9curis\u00E9',
     desc: 'Stripe certifi\u00E9',
   },
-  { icon: Clock, title: 'Livraison 48h\u201372h', desc: 'Partout en France' },
+  { icon: Clock, title: 'Livraison 48h–72h', desc: 'Partout en France' },
   {
     icon: Headphones,
     title: 'Service client',
@@ -28,7 +28,7 @@ const SERVICES_FR = [
 const SERVICES_AR = [
   { icon: Truck, title: 'توصيل مُعتنى به', desc: 'طرد محمي' },
   { icon: Shield, title: 'دفع آمن', desc: 'Stripe معتمد' },
-  { icon: Clock, title: 'توصيل 48h–72h', desc: 'في كل أنحاء الجزائر' },
+  { icon: Clock, title: 'توصيل 48h–72h', desc: 'في كل أنحاء فرنسا' },
   { icon: Headphones, title: 'خدمة العملاء', desc: 'في خدمتكم' },
   { icon: Store, title: 'الاستلام من المتجر', desc: 'مجاني وسريع' },
   { icon: Zap, title: 'شحن سريع', desc: 'الطلب قبل الساعة 14:00' },

@@ -23,12 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title:
       locale === 'ar'
-        ? 'Golden Defla — عسل جزائري فاخر'
-        : 'Golden Defla — Miel alg\u00E9rien premium',
+        ? 'Golden Defla — عسل فرنسي عضوي فاخر'
+        : 'Golden Defla — Miel bio français premium',
     description:
       locale === 'ar'
-        ? 'اكتشف تشكيلتنا من العسل الجزائري الفاخر، يُحصد بشغف وتقاليد عريقة في جبال الجزائر.'
-        : "D\u00E9couvrez notre s\u00E9lection de miels alg\u00E9riens premium, r\u00E9colt\u00E9s avec passion dans les montagnes d'Alg\u00E9rie.",
+        ? 'اكتشف تشكيلتنا من العسل الفرنسي العضوي الفاخر، يُحصد بشغف من أجمل أراضي فرنسا.'
+        : 'Découvrez notre sélection de miels bio français premium, récoltés avec passion dans les terroirs de France.',
     path: '',
     locale,
   });

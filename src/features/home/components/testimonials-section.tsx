@@ -28,7 +28,7 @@ const BENEFITS_FR = [
     slug: 'rare',
     emoji: '💎',
     label: 'Miel rare',
-    desc: 'Sidr, jujubier... des miels exceptionnels, r\u00E9colt\u00E9s une fois par an.',
+    desc: 'Châtaignier, sarrasin... des miels exceptionnels aux saveurs intenses et uniques.',
   },
   {
     slug: 'organic',
@@ -61,7 +61,7 @@ const BENEFITS_AR = [
     slug: 'rare',
     emoji: '💎',
     label: 'عسل نادر',
-    desc: 'السدر، النبق... عسل استثنائي يُحصد مرة واحدة في السنة.',
+    desc: 'الكستناء، الحنطة السوداء... عسل استثنائي بنكهات قوية وفريدة.',
   },
   {
     slug: 'organic',
@@ -80,8 +80,8 @@ export function TestimonialsSection({ locale }: TestimonialsSectionProps) {
       <div className="container mx-auto px-4">
         <h2 className="font-[var(--font-display)] text-2xl md:text-3xl font-bold text-center mb-8">
           {isRtl
-            ? 'فوائد العسل الجزائري'
-            : 'Les bienfaits du miel alg\u00E9rien'}
+            ? 'فوائد العسل الفرنسي البيو'
+            : 'Les bienfaits du miel français bio'}
         </h2>
 
         <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">

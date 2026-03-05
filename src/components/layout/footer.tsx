@@ -45,8 +45,8 @@ export function Footer({ locale }: FooterProps) {
             </h3>
             <p className="text-sm text-gold-200/60 leading-relaxed max-w-xs">
               {isRtl
-                ? 'عسل جزائري فاخر، يُحصد بشغف وتقاليد عريقة في جبال الجزائر.'
-                : 'Miel alg\u00E9rien premium, r\u00E9colt\u00E9 avec passion dans les montagnes d\u2019Alg\u00E9rie.'}
+                ? 'عسل فرنسي عضوي فاخر، يُحصد بشغف وتقاليد عريقة من أجمل أراضي فرنسا.'
+                : 'Miel bio français premium, récolté avec passion dans les terroirs de France.'}
             </p>
           </div>
 
@@ -130,7 +130,7 @@ export function Footer({ locale }: FooterProps) {
               >
                 {isRtl ? 'الدفع' : 'Livraison'}
               </Link>
-              <span className="text-gold-200/60">contact@goldendefla.dz</span>
+              <span className="text-gold-200/60">contact@goldendefla.fr</span>
             </nav>
           </div>
         </div>

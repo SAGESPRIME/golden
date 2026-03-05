@@ -13,8 +13,8 @@ export function HeaderAnnouncement({ locale }: HeaderAnnouncementProps) {
         <Truck className="size-3.5 shrink-0" />
         <span>
           {isRtl
-            ? 'توصيل مجاني للطلبات فوق 45€ — شحن خلال 48 ساعة في كل أنحاء الجزائر'
-            : "Livraison offerte des 45\u20AC d'achats \u2014 Exp\u00E9dition 48h partout en Alg\u00E9rie"}
+            ? 'توصيل مجاني للطلبات فوق 45€ — شحن خلال 48 ساعة في كل أنحاء فرنسا'
+            : "Livraison offerte dès 45\u20AC d'achats \u2014 Expédition 48h partout en France"}
         </span>
       </div>
     </div>

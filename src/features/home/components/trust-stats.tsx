@@ -7,36 +7,36 @@ interface TrustStatsProps {
 const BADGES_FR = [
   {
     icon: Home,
-    title: 'Miel alg\u00E9rien authentique',
-    desc: 'R\u00E9colt\u00E9 dans les montagnes d\u2019Alg\u00E9rie',
+    title: 'Miel français bio',
+    desc: 'Récolté dans les terroirs de France',
   },
   {
     icon: Award,
-    title: 'Qualit\u00E9 artisanale',
+    title: 'Qualité artisanale',
     desc: 'Sans additif, sans traitement',
   },
   {
     icon: Heart,
     title: 'Respect des abeilles',
-    desc: 'Apiculture traditionnelle pr\u00E9serv\u00E9e',
+    desc: 'Apiculture traditionnelle préservée',
   },
   {
     icon: Leaf,
-    title: '100% naturel',
-    desc: 'Origine unique et tra\u00E7able',
+    title: '100% naturel & bio',
+    desc: 'Origine unique et traçable',
   },
   {
     icon: Star,
-    title: 'Avis clients v\u00E9rifi\u00E9s',
-    desc: '+500 commandes livr\u00E9es',
+    title: 'Avis clients vérifiés',
+    desc: '+500 commandes livrées',
   },
 ];
 
 const BADGES_AR = [
-  { icon: Home, title: 'عسل جزائري أصيل', desc: 'يُحصد في جبال الجزائر' },
+  { icon: Home, title: 'عسل فرنسي عضوي', desc: 'يُحصد من أراضي فرنسا' },
   { icon: Award, title: 'جودة حرفية', desc: 'بدون إضافات أو معالجة' },
   { icon: Heart, title: 'احترام النحل', desc: 'تربية نحل تقليدية محفوظة' },
-  { icon: Leaf, title: '100% طبيعي', desc: 'مصدر فريد وقابل للتتبع' },
+  { icon: Leaf, title: '100% طبيعي وعضوي', desc: 'مصدر فريد وقابل للتتبع' },
   { icon: Star, title: 'آراء موثقة', desc: '+500 طلب تم توصيله' },
 ];
 
