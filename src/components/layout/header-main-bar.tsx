@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShoppingCart, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -30,11 +31,15 @@ export function HeaderMainBar({ locale }: HeaderMainBarProps) {
       }`}
     >
       <div className="container mx-auto flex h-20 items-center gap-4 px-4">
-        <Link
-          href={`/${locale}`}
-          className="font-[var(--font-display)] text-2xl font-bold tracking-tight text-foreground hover:text-primary transition-colors shrink-0"
-        >
-          Golden<span className="text-primary"> Defla</span>
+        <Link href={`/${locale}`} className="shrink-0">
+          <Image
+            src="/images/logo.png"
+            alt="Golden Defla"
+            width={140}
+            height={56}
+            className="h-12 w-auto object-contain"
+            priority
+          />
         </Link>
 
         <div className="flex-1 max-w-md mx-auto hidden md:flex items-center gap-2 rounded-sm border border-border bg-background px-4 py-2.5 cursor-default">
