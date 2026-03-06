@@ -89,23 +89,23 @@ export function ProductCard({
             </span>
           )}
         </div>
-        <div className="flex flex-col gap-2 mt-auto pt-1">
+        <div className="flex flex-col gap-1.5 mt-auto pt-1">
           <Button
             size="sm"
-            className="w-full rounded-none uppercase tracking-wider text-xs font-bold"
+            className="w-full rounded-none uppercase tracking-wider text-[10px] sm:text-xs font-bold px-1"
             disabled={!product.inStock}
             onClick={() => onAddToCart?.(product)}
           >
-            {isRtl ? 'أضف إلى السلة' : 'AJOUTER AU PANIER'}
+            {isRtl ? 'أضف للسلة' : 'AU PANIER'}
           </Button>
           <Button
             size="sm"
             variant="outline"
-            className="w-full rounded-none uppercase tracking-wider text-xs font-bold"
+            className="w-full rounded-none uppercase tracking-wider text-[10px] sm:text-xs font-bold px-1"
             asChild
           >
             <Link href={`/${locale}/products/${product.slug}`}>
-              {isRtl ? 'عرض المنتج' : 'VOIR LE PRODUIT'}
+              {isRtl ? 'عرض المنتج' : 'VOIR'}
             </Link>
           </Button>
         </div>
