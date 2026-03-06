@@ -81,7 +81,7 @@ export const seedProducts: SeedProduct[] = [
     category: 'organic',
     weight: 500,
     inStock: true,
-    featured: false,
+    featured: true,
   },
   {
     _id: 'prod_006',

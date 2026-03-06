@@ -7,12 +7,14 @@ export interface ProductGridProps {
   products: SeedProduct[];
   locale: string;
   onAddToCart?: (product: SeedProduct) => void;
+  columns?: 3 | 4;
 }
 
 export function ProductGrid({
   products,
   locale,
   onAddToCart,
+  columns = 3,
 }: ProductGridProps) {
   if (products.length === 0) {
     return (
@@ -25,7 +27,9 @@ export function ProductGrid({
   }
 
   return (
-    <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
+    <div
+      className={`grid grid-cols-2 gap-3 sm:gap-6 ${columns === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'}`}
+    >
       {products.map((product) => (
         <ProductCard
           key={product._id}

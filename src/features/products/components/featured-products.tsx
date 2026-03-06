@@ -55,6 +55,7 @@ export function FeaturedProducts({ locale }: FeaturedProductsProps) {
           products={featuredProducts}
           locale={locale}
           onAddToCart={handleAddToCart}
+          columns={4}
         />
       </div>
     </section>
