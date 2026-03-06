@@ -22,10 +22,17 @@ export function HeroSlide({ slide, locale, active }: HeroSlideProps) {
 
   return (
     <div
-      className={`min-w-full bg-gradient-to-br ${slide.bg} transition-opacity duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
+      className={`min-w-full relative transition-opacity duration-700 ${active ? 'opacity-100' : 'opacity-0'}`}
       aria-hidden={!active}
+      style={{
+        backgroundImage: 'url(/images/hero.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
     >
-      <div className="container mx-auto px-4 py-8 md:py-20">
+      {/* Overlay pour lisibilité du texte */}
+      <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px]" />
+      <div className="relative container mx-auto px-4 py-8 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
           {/* Text — toujours en premier sur mobile */}
           <div
