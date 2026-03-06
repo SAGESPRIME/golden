@@ -30,14 +30,14 @@ export function HeaderMainBar({ locale }: HeaderMainBarProps) {
         scrolled ? 'shadow-sm' : ''
       }`}
     >
-      <div className="container mx-auto flex h-20 items-center gap-4 px-4">
+      <div className="container mx-auto flex h-24 items-center gap-4 px-4">
         <Link href={`/${locale}`} className="shrink-0">
           <Image
             src="/images/logo.png"
             alt="Golden Defla"
-            width={140}
-            height={56}
-            className="h-12 w-auto object-contain"
+            width={107}
+            height={80}
+            className="h-20 w-auto object-contain"
             priority
           />
         </Link>
