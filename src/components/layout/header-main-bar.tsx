@@ -34,8 +34,8 @@ export function HeaderMainBar({ locale }: HeaderMainBarProps) {
         <Link href={`/${locale}`} className="shrink-0">
           <Image
             src="/images/logo.png"
-            alt="Golden Defla"
-            width={107}
+            alt="Golden Dahlia"
+            width={106}
             height={80}
             className="h-20 w-auto object-contain"
             priority
