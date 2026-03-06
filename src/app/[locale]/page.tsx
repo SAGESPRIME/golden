@@ -48,6 +48,23 @@ export default async function HomePage({ params }: Props) {
       />
       <main className="flex flex-col">
         <HeroSection locale={locale} />
+
+        {/* Vidéo mise en avant juste après le hero */}
+        <section className="py-10 md:py-14 bg-background">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <iframe
+                loading="lazy"
+                title="Gumlet video player"
+                src="https://play.gumlet.io/embed/69aa06bb8b86e9ed048ec5e7?background=false&autoplay=false&loop=true&disable_player_controls=false"
+                className="absolute inset-0 w-full h-full border-0"
+                referrerPolicy="origin"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+              />
+            </div>
+          </div>
+        </section>
+
         <TrustStats locale={locale} />
         <CategoryGrid locale={locale} />
         <FeaturedProducts locale={locale} />
