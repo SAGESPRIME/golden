@@ -65,9 +65,9 @@ export default async function HomePage({ params }: Props) {
           </div>
         </section>
 
+        <FeaturedProducts locale={locale} />
         <TrustStats locale={locale} />
         <CategoryGrid locale={locale} />
-        <FeaturedProducts locale={locale} />
         <TestimonialsSection locale={locale} />
         <StorySection locale={locale} />
         <ServicesStrip locale={locale} />
