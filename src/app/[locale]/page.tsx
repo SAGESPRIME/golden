@@ -66,10 +66,10 @@ export default async function HomePage({ params }: Props) {
         </section>
 
         <FeaturedProducts locale={locale} />
+        <StorySection locale={locale} />
         <TrustStats locale={locale} />
         <CategoryGrid locale={locale} />
         <TestimonialsSection locale={locale} />
-        <StorySection locale={locale} />
         <ServicesStrip locale={locale} />
       </main>
     </>
