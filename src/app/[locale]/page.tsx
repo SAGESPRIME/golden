@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title:
       locale === 'ar'
-        ? 'Golden Defla — عسل فرنسي عضوي فاخر'
-        : 'Golden Defla — Miel bio français premium',
+        ? 'Golden Dahlia — عسل فرنسي عضوي فاخر'
+        : 'Golden Dahlia — Miel bio français premium',
     description:
       locale === 'ar'
         ? 'اكتشف تشكيلتنا من العسل الفرنسي العضوي الفاخر، يُحصد بشغف من أجمل أراضي فرنسا.'

@@ -41,7 +41,7 @@ export function Footer({ locale }: FooterProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1 space-y-3">
             <h3 className="font-[var(--font-display)] text-xl font-bold text-gold-300">
-              Golden Defla
+              Golden Dahlia
             </h3>
             <p className="text-sm text-gold-200/60 leading-relaxed max-w-xs">
               {isRtl
@@ -130,14 +130,14 @@ export function Footer({ locale }: FooterProps) {
               >
                 {isRtl ? 'الدفع' : 'Livraison'}
               </Link>
-              <span className="text-gold-200/60">contact@goldendefla.fr</span>
+              <span className="text-gold-200/60">contact@goldendahlia.fr</span>
             </nav>
           </div>
         </div>
 
         <div className="mt-10 border-t border-gold-900/30 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gold-200/40">
           <p>
-            &copy; {year} Golden Defla.{' '}
+            &copy; {year} Golden Dahlia.{' '}
             {isRtl ? 'جميع الحقوق محفوظة.' : 'Tous droits r\u00E9serv\u00E9s.'}
           </p>
           <div className="flex gap-4">
