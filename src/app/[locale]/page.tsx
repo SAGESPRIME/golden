@@ -3,7 +3,6 @@ import { setRequestLocale } from 'next-intl/server';
 import { FeaturedProducts } from '@/features/products/components/featured-products';
 import {
   HeroSection,
-  TrustStats,
   CategoryGrid,
   StorySection,
   TestimonialsSection,
@@ -67,7 +66,6 @@ export default async function HomePage({ params }: Props) {
 
         <FeaturedProducts locale={locale} />
         <StorySection locale={locale} />
-        <TrustStats locale={locale} />
         <CategoryGrid locale={locale} />
         <TestimonialsSection locale={locale} />
         <ServicesStrip locale={locale} />
