@@ -7,6 +7,7 @@ import { Providers } from './providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/sonner';
+import { ChatbotWidget } from '@/features/chat/components/chatbot-widget';
 import '@/app/globals.css';
 
 const dmSans = DM_Sans({
@@ -52,6 +53,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <div className="flex-1">{children}</div>
             <Footer locale={locale} />
             <Toaster />
+            <ChatbotWidget locale={locale} />
           </Providers>
         </NextIntlClientProvider>
       </body>
