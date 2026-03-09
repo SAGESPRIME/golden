@@ -1,6 +1,6 @@
 {
   "common": {
-    "siteName": "قولدن دفلى",
+    "siteName": "داليا للطبيعة والعناية",
     "loading": "جار التحميل...",
     "error": "حدث خطأ",
     "backToHome": "العودة إلى الصفحة الرئيسية"
@@ -14,8 +14,8 @@
   },
   "home": {
     "hero": {
-      "title": "عسل فاخر من الجزائر",
-      "subtitle": "اكتشفوا عسلنا الاستثنائي، المجموع بعناية من جبال القبائل",
+      "title": "النقاء والتميز",
+      "subtitle": "يُحصد في قلب الريف الإسباني، عسلنا يجمع بين الأصالة والفوائد الطبيعية",
       "cta": "اكتشف عسلنا"
     },
     "featured": {
@@ -28,23 +28,23 @@
     "addToCart": "أضف إلى السلة",
     "outOfStock": "نفذ من المخزون",
     "weight": "الوزن",
-    "category": "الفئة",
+    "category": "التشكيلة",
     "featured": "مميز",
     "price": "السعر",
     "description": "الوصف",
     "backToCatalog": "العودة إلى الكتالوج",
     "discount": "-{percent}%",
     "grams": "{weight} غرام",
-    "noProducts": "لا توجد منتجات في هذه الفئة",
+    "noProducts": "لا توجد منتجات في هذه التشكيلة",
     "addedToCart": "تمت الإضافة إلى السلة"
   },
   "categories": {
     "all": "الكل",
-    "mountain": "عسل الجبال",
-    "forest": "عسل الغابة",
-    "flower": "عسل الأزهار",
-    "rare": "عسل نادر",
-    "organic": "عسل عضوي"
+    "bien-etre": "عناية طبيعية",
+    "lavande": "لافندر",
+    "foret": "غابة",
+    "fleurs": "أزهار",
+    "rare": "نادر"
   },
   "header": {
     "cart": "السلة",
@@ -68,12 +68,75 @@
     "postalCode": "الرمز البريدي",
     "country": "البلد",
     "phone": "الهاتف",
-    "placeOrder": "تأكيد الطلب"
+    "placeOrder": "تأكيد الطلب",
+    "success": "تم تأكيد الطلب!",
+    "successMessage": "شكرا لطلبك. ستتلقى رسالة تأكيد عبر البريد الإلكتروني.",
+    "viewOrders": "عرض طلباتي"
   },
   "footer": {
-    "description": "عسل فاخر من الجزائر، يُجمع بشغف وتقاليد عريقة.",
+    "description": "داليا للطبيعة والعناية — عسل استثنائي يُحصد في إسبانيا. نقاء وأصالة وفوائد طبيعية.",
     "quickLinks": "روابط سريعة",
     "contact": "اتصل بنا",
     "rights": "جميع الحقوق محفوظة."
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "name": "الاسم",
+    "loginError": "بريد إلكتروني أو كلمة مرور غير صحيحة",
+    "signupError": "خطأ في إنشاء الحساب",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "userMenu": "قائمة المستخدم"
+  },
+  "account": {
+    "title": "حسابي",
+    "profile": "الملف الشخصي",
+    "orders": "طلباتي",
+    "noOrders": "ليس لديك طلبات بعد.",
+    "orderNumber": "طلب #{id}",
+    "orderDate": "التاريخ",
+    "orderTotal": "المجموع",
+    "orderStatus": "الحالة",
+    "items": "{count} عنصر"
+  },
+  "orderStatus": {
+    "pending": "قيد الانتظار",
+    "paid": "مدفوع",
+    "shipped": "تم الشحن",
+    "delivered": "تم التوصيل",
+    "cancelled": "ملغى"
+  },
+  "admin": {
+    "title": "الإدارة",
+    "dashboard": "لوحة التحكم",
+    "products": "المنتجات",
+    "orders": "الطلبات",
+    "newProduct": "منتج جديد",
+    "editProduct": "تعديل المنتج",
+    "deleteProduct": "حذف",
+    "deleteConfirm": "هل أنت متأكد من حذف هذا المنتج؟",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "nameFr": "الاسم (FR)",
+    "nameAr": "الاسم (AR)",
+    "descriptionFr": "الوصف (FR)",
+    "descriptionAr": "الوصف (AR)",
+    "slug": "Slug",
+    "price": "السعر (سنتيم)",
+    "compareAtPrice": "السعر المشطوب (سنتيم)",
+    "images": "الصور (روابط، واحد في كل سطر)",
+    "category": "التشكيلة",
+    "weight": "الوزن (غ)",
+    "inStock": "متوفر",
+    "featured": "مميز",
+    "updateStatus": "تحديث الحالة",
+    "totalOrders": "إجمالي الطلبات",
+    "totalProducts": "إجمالي المنتجات",
+    "totalRevenue": "الإيرادات",
+    "recentOrders": "الطلبات الأخيرة"
   }
 }

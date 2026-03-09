@@ -13,14 +13,25 @@ interface CartItemRowProps {
   onRemove: (productId: string) => void;
 }
 
-export function CartItemRow({ item, locale, onUpdateQuantity, onRemove }: CartItemRowProps) {
+export function CartItemRow({
+  item,
+  locale,
+  onUpdateQuantity,
+  onRemove,
+}: CartItemRowProps) {
   const name = locale === 'ar' ? item.name.ar : item.name.fr;
   const lineTotal = item.price * item.quantity;
 
   return (
     <div className="flex items-center gap-4 py-4 border-b last:border-b-0">
       <div className="relative size-20 shrink-0 overflow-hidden rounded-lg bg-muted">
-        <Image src={item.image} alt={name} fill className="object-cover" sizes="80px" />
+        <Image
+          src={item.image}
+          alt={name}
+          fill
+          className="object-cover"
+          sizes="80px"
+        />
       </div>
 
       <div className="flex-1 min-w-0">
@@ -38,7 +49,9 @@ export function CartItemRow({ item, locale, onUpdateQuantity, onRemove }: CartIt
         >
           -
         </Button>
-        <span className="w-8 text-center text-sm font-medium">{item.quantity}</span>
+        <span className="w-8 text-center text-sm font-medium">
+          {item.quantity}
+        </span>
         <Button
           variant="outline"
           size="icon-xs"
@@ -48,7 +61,9 @@ export function CartItemRow({ item, locale, onUpdateQuantity, onRemove }: CartIt
         </Button>
       </div>
 
-      <span className="w-24 text-end font-medium">{formatPrice(lineTotal, locale)}</span>
+      <span className="w-24 text-end font-medium">
+        {formatPrice(lineTotal, locale)}
+      </span>
 
       <Button
         variant="ghost"

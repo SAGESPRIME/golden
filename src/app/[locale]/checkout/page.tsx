@@ -13,9 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title: locale === 'ar' ? 'الدفع' : 'Paiement',
     description:
-      locale === 'ar'
-        ? 'اتمم عملية الشراء.'
-        : 'Finalisez votre commande.',
+      locale === 'ar' ? 'اتمم عملية الشراء.' : 'Finalisez votre commande.',
     path: '/checkout',
     locale,
   });

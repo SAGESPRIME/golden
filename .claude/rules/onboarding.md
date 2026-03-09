@@ -6,13 +6,13 @@ Quand l'utilisateur demarre une conversation sur ce projet, **verifie d'abord l'
 
 ### Fichiers a verifier
 
-| Fichier | Signification |
-|---------|---------------|
+| Fichier                 | Signification     |
+| ----------------------- | ----------------- |
 | `specs/constitution.md` | Principes definis |
-| `specs/*/prd.md` | PRD existant |
-| `specs/*/plan.md` | Plan technique |
-| `specs/*/prd.json` | Ralph configure |
-| `src/**/*.{ts,tsx}` | Code existant |
+| `specs/*/prd.md`        | PRD existant      |
+| `specs/*/plan.md`       | Plan technique    |
+| `specs/*/prd.json`      | Ralph configure   |
+| `src/**/*.{ts,tsx}`     | Code existant     |
 
 ### Comportement selon l'etat
 
@@ -79,6 +79,7 @@ Pour voir le statut : cat specs/*/prd.json | jq '.userStories[] | {id, title, st
 ### Exceptions
 
 **Ne PAS proposer l'onboarding si** :
+
 - L'utilisateur demande explicitement autre chose (bug fix, question, etc.)
 - L'utilisateur tape une commande slash (`/...`)
 - Le message contient "skip", "passer", "ignore"

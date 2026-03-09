@@ -1,9 +1,9 @@
 {
   "common": {
-    "siteName": "Golden Defla",
+    "siteName": "DAHLIA Nature & Bien-Être",
     "loading": "Chargement...",
     "error": "Une erreur est survenue",
-    "backToHome": "Retour a l'accueil"
+    "backToHome": "Retour à l'accueil"
   },
   "nav": {
     "home": "Accueil",
@@ -14,9 +14,9 @@
   },
   "home": {
     "hero": {
-      "title": "Miel Premium d'Algerie",
-      "subtitle": "Decouvrez nos miels d'exception, recoltes avec soin dans les montagnes de Kabylie",
-      "cta": "Decouvrir nos miels"
+      "title": "Pureté & Excellence",
+      "subtitle": "Récoltés au cœur de l'arrière-pays espagnol, nos miels allient authenticité et bienfaits naturels",
+      "cta": "Découvrir nos miels"
     },
     "featured": {
       "title": "Nos miels vedettes",
@@ -28,23 +28,23 @@
     "addToCart": "Ajouter au panier",
     "outOfStock": "Rupture de stock",
     "weight": "Poids",
-    "category": "Categorie",
+    "category": "Sélection",
     "featured": "Vedette",
     "price": "Prix",
     "description": "Description",
     "backToCatalog": "Retour au catalogue",
     "discount": "-{percent}%",
     "grams": "{weight}g",
-    "noProducts": "Aucun produit dans cette categorie",
-    "addedToCart": "Produit ajoute au panier"
+    "noProducts": "Aucun produit dans cette sélection",
+    "addedToCart": "Produit ajouté au panier"
   },
   "categories": {
     "all": "Tous",
-    "mountain": "Miel de montagne",
-    "forest": "Miel de foret",
-    "flower": "Miel de fleurs",
-    "rare": "Miel rare",
-    "organic": "Miel bio"
+    "bien-etre": "Bien-Être",
+    "lavande": "Lavande",
+    "foret": "Forêt",
+    "fleurs": "Fleurs",
+    "rare": "Rareté"
   },
   "header": {
     "cart": "Panier",
@@ -67,13 +67,76 @@
     "city": "Ville",
     "postalCode": "Code postal",
     "country": "Pays",
-    "phone": "Telephone",
-    "placeOrder": "Passer la commande"
+    "phone": "Téléphone",
+    "placeOrder": "Passer la commande",
+    "success": "Commande confirmée !",
+    "successMessage": "Merci pour votre commande. Vous recevrez un email de confirmation.",
+    "viewOrders": "Voir mes commandes"
   },
   "footer": {
-    "description": "Miel premium d'Algerie, recolte avec passion et tradition.",
+    "description": "DAHLIA Nature & Bien-Être — Miels d'exception récoltés en Espagne. Pureté, authenticité et bienfaits naturels.",
     "quickLinks": "Liens rapides",
     "contact": "Contact",
-    "rights": "Tous droits reserves."
+    "rights": "Tous droits réservés."
+  },
+  "auth": {
+    "login": "Connexion",
+    "signup": "Créer un compte",
+    "logout": "Déconnexion",
+    "email": "Email",
+    "password": "Mot de passe",
+    "name": "Nom",
+    "loginError": "Email ou mot de passe incorrect",
+    "signupError": "Erreur lors de la création du compte",
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Déjà un compte ?",
+    "userMenu": "Menu utilisateur"
+  },
+  "account": {
+    "title": "Mon Compte",
+    "profile": "Profil",
+    "orders": "Mes commandes",
+    "noOrders": "Vous n'avez pas encore de commande.",
+    "orderNumber": "Commande #{id}",
+    "orderDate": "Date",
+    "orderTotal": "Total",
+    "orderStatus": "Statut",
+    "items": "{count} article(s)"
+  },
+  "orderStatus": {
+    "pending": "En attente",
+    "paid": "Payée",
+    "shipped": "Expédiée",
+    "delivered": "Livrée",
+    "cancelled": "Annulée"
+  },
+  "admin": {
+    "title": "Administration",
+    "dashboard": "Tableau de bord",
+    "products": "Produits",
+    "orders": "Commandes",
+    "newProduct": "Nouveau produit",
+    "editProduct": "Modifier le produit",
+    "deleteProduct": "Supprimer",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer ce produit ?",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "nameFr": "Nom (FR)",
+    "nameAr": "Nom (AR)",
+    "descriptionFr": "Description (FR)",
+    "descriptionAr": "Description (AR)",
+    "slug": "Slug",
+    "price": "Prix (centimes)",
+    "compareAtPrice": "Prix barré (centimes)",
+    "images": "Images (URLs, une par ligne)",
+    "category": "Sélection",
+    "weight": "Poids (g)",
+    "inStock": "En stock",
+    "featured": "Vedette",
+    "updateStatus": "Modifier le statut",
+    "totalOrders": "Total commandes",
+    "totalProducts": "Total produits",
+    "totalRevenue": "Chiffre d'affaires",
+    "recentOrders": "Commandes récentes"
   }
 }

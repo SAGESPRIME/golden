@@ -1,8 +1,13 @@
 import type { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
 import { FeaturedProducts } from '@/features/products/components/featured-products';
+import {
+  HeroSection,
+  CategoryGrid,
+  StorySection,
+  TestimonialsSection,
+  ServicesStrip,
+} from '@/features/home';
 import {
   generatePageMetadata,
   generateOrganizationSchema,
@@ -17,12 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return generatePageMetadata({
     title:
       locale === 'ar'
-        ? 'عسل جزائري فاخر'
-        : 'Miel premium d\'Algerie',
+        ? 'Golden Dahlia — عسل فرنسي عضوي فاخر'
+        : 'Golden Dahlia — Miel bio français premium',
     description:
       locale === 'ar'
-        ? 'اكتشف تشكيلتنا من العسل الجزائري الفاخر، يُحصد بشغف وتقاليد عريقة.'
-        : 'Decouvrez notre selection de miels d\'Algerie, recoltes avec passion et tradition.',
+        ? 'اكتشف تشكيلتنا من العسل الفرنسي العضوي الفاخر، يُحصد بشغف من أجمل أراضي فرنسا.'
+        : 'Découvrez notre sélection de miels bio français premium, récoltés avec passion dans les terroirs de France.',
     path: '',
     locale,
   });
@@ -40,36 +45,31 @@ export default async function HomePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
       />
-      <HomeContent locale={locale} />
-    </>
-  );
-}
+      <main className="flex flex-col">
+        <HeroSection locale={locale} />
 
-function HomeContent({ locale }: { locale: string }) {
-  const t = useTranslations('home');
-
-  return (
-    <main className="flex flex-col">
-      <section className="flex min-h-[60vh] flex-col items-center justify-center p-8">
-        <div className="text-center space-y-6">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
-            {t('hero.title')}
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {t('hero.subtitle')}
-          </p>
-          <div className="mt-8">
-            <Link
-              href={`/${locale}/products`}
-              className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-3 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
-            >
-              {t('hero.cta')}
-            </Link>
+        {/* Vidéo mise en avant juste après le hero */}
+        <section className="py-10 md:py-14 bg-background">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <iframe
+                loading="lazy"
+                title="Gumlet video player"
+                src="https://play.gumlet.io/embed/69aa06bb8b86e9ed048ec5e7?background=false&autoplay=false&loop=true&disable_player_controls=false"
+                className="absolute inset-0 w-full h-full border-0"
+                referrerPolicy="origin"
+                allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen"
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <FeaturedProducts locale={locale} />
-    </main>
+        <FeaturedProducts locale={locale} />
+        <StorySection locale={locale} />
+        <CategoryGrid locale={locale} />
+        <TestimonialsSection locale={locale} />
+        <ServicesStrip locale={locale} />
+      </main>
+    </>
   );
 }

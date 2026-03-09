@@ -11,8 +11,14 @@ vi.mock('next/image', () => ({
 }));
 
 vi.mock('next/link', () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string } & Record<string, unknown>) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: { children: React.ReactNode; href: string } & Record<string, unknown>) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
@@ -34,12 +40,15 @@ vi.mock('sonner', () => ({
 
 const mockProduct: SeedProduct = {
   _id: 'prod_test',
-  name: { fr: 'Miel de Jijel', ar: 'عسل جيجل' },
-  description: { fr: 'Miel de montagne exceptionnel', ar: 'عسل جبلي استثنائي' },
-  slug: 'miel-de-jijel',
+  name: { fr: 'Miel de Lavande Bio', ar: 'عسل اللافندر العضوي' },
+  description: {
+    fr: 'Miel de lavande exceptionnel',
+    ar: 'عسل لافندر استثنائي',
+  },
+  slug: 'miel-lavande-bio',
   price: 3500,
-  images: ['/images/jijel-1.jpg', '/images/jijel-2.jpg'],
-  category: 'mountain',
+  images: ['/images/lavande-1.jpg', '/images/lavande-2.jpg'],
+  category: 'flower',
   weight: 500,
   inStock: true,
   featured: true,
@@ -60,17 +69,19 @@ const outOfStockProduct: SeedProduct = {
 describe('ProductDetail', () => {
   it('renders product name in FR', () => {
     render(<ProductDetail product={mockProduct} locale="fr" />);
-    expect(screen.getByText('Miel de Jijel')).toBeInTheDocument();
+    expect(screen.getByText('Miel de Lavande Bio')).toBeInTheDocument();
   });
 
   it('renders product name in AR', () => {
     render(<ProductDetail product={mockProduct} locale="ar" />);
-    expect(screen.getByText('عسل جيجل')).toBeInTheDocument();
+    expect(screen.getByText('عسل اللافندر العضوي')).toBeInTheDocument();
   });
 
   it('renders description', () => {
     render(<ProductDetail product={mockProduct} locale="fr" />);
-    expect(screen.getByText('Miel de montagne exceptionnel')).toBeInTheDocument();
+    expect(
+      screen.getByText('Miel de lavande exceptionnel')
+    ).toBeInTheDocument();
   });
 
   it('renders price', () => {

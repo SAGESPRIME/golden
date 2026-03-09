@@ -5,7 +5,9 @@ import { CheckoutForm } from './checkout-form';
 
 describe('CheckoutForm', () => {
   it('renders all shipping fields', () => {
-    render(<CheckoutForm locale="fr" onSubmit={vi.fn()} isSubmitting={false} />);
+    render(
+      <CheckoutForm locale="fr" onSubmit={vi.fn()} isSubmitting={false} />
+    );
     expect(screen.getByLabelText(/nom/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/adresse/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/ville/i)).toBeInTheDocument();
@@ -15,13 +17,19 @@ describe('CheckoutForm', () => {
   });
 
   it('renders AR labels when locale is ar', () => {
-    render(<CheckoutForm locale="ar" onSubmit={vi.fn()} isSubmitting={false} />);
+    render(
+      <CheckoutForm locale="ar" onSubmit={vi.fn()} isSubmitting={false} />
+    );
     expect(screen.getByLabelText(/الاسم/)).toBeInTheDocument();
   });
 
   it('renders submit button', () => {
-    render(<CheckoutForm locale="fr" onSubmit={vi.fn()} isSubmitting={false} />);
-    expect(screen.getByRole('button', { name: /commande/i })).toBeInTheDocument();
+    render(
+      <CheckoutForm locale="fr" onSubmit={vi.fn()} isSubmitting={false} />
+    );
+    expect(
+      screen.getByRole('button', { name: /commande/i })
+    ).toBeInTheDocument();
   });
 
   it('disables submit button when submitting', () => {
@@ -31,10 +39,15 @@ describe('CheckoutForm', () => {
 
   it('calls onSubmit with form data', async () => {
     const onSubmit = vi.fn();
-    render(<CheckoutForm locale="fr" onSubmit={onSubmit} isSubmitting={false} />);
+    render(
+      <CheckoutForm locale="fr" onSubmit={onSubmit} isSubmitting={false} />
+    );
 
     await userEvent.type(screen.getByLabelText(/nom/i), 'Jean Dupont');
-    await userEvent.type(screen.getByLabelText(/adresse/i), '12 Rue de la Paix');
+    await userEvent.type(
+      screen.getByLabelText(/adresse/i),
+      '12 Rue de la Paix'
+    );
     await userEvent.type(screen.getByLabelText(/ville/i), 'Paris');
     await userEvent.type(screen.getByLabelText(/code postal/i), '75001');
     await userEvent.type(screen.getByLabelText(/pays/i), 'France');

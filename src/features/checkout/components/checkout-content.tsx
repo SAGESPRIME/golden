@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useTransition } from 'react';
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
 import { toast } from 'sonner';
@@ -14,7 +14,7 @@ import type { ShippingAddressFormData } from '@/lib/validators';
 
 export function CheckoutContent({ locale }: { locale: string }) {
   const { items, totalPrice, totalItems, clearCart } = useCart();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const isRtl = locale === 'ar';
 
   if (items.length === 0) {
@@ -33,28 +33,28 @@ export function CheckoutContent({ locale }: { locale: string }) {
     );
   }
 
-  const handleSubmit = async (shippingAddress: ShippingAddressFormData) => {
-    setIsSubmitting(true);
-    try {
-      const response = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, shippingAddress, locale }),
-      });
+  const handleSubmit = (shippingAddress: ShippingAddressFormData) => {
+    startTransition(async () => {
+      try {
+        const response = await fetch('/api/checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items, shippingAddress, locale }),
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error ?? 'Checkout failed');
+        if (!response.ok) {
+          throw new Error(data.error ?? 'Checkout failed');
+        }
+
+        clearCart();
+        window.location.href = data.url;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'Erreur';
+        toast.error(message);
       }
-
-      clearCart();
-      window.location.href = data.url;
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Erreur';
-      toast.error(message);
-      setIsSubmitting(false);
-    }
+    });
   };
 
   return (
@@ -62,10 +62,16 @@ export function CheckoutContent({ locale }: { locale: string }) {
       <div className="lg:col-span-2">
         <Card>
           <CardHeader>
-            <CardTitle>{isRtl ? 'عنوان التوصيل' : 'Adresse de livraison'}</CardTitle>
+            <CardTitle>
+              {isRtl ? 'عنوان التوصيل' : 'Adresse de livraison'}
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <CheckoutForm locale={locale} onSubmit={handleSubmit} isSubmitting={isSubmitting} />
+            <CheckoutForm
+              locale={locale}
+              onSubmit={handleSubmit}
+              isSubmitting={isPending}
+            />
           </CardContent>
         </Card>
       </div>
@@ -77,7 +83,10 @@ export function CheckoutContent({ locale }: { locale: string }) {
           </CardHeader>
           <CardContent className="space-y-3">
             {items.map((item) => (
-              <div key={item.productId} className="flex justify-between text-sm">
+              <div
+                key={item.productId}
+                className="flex justify-between text-sm"
+              >
                 <span>
                   {isRtl ? item.name.ar : item.name.fr} x{item.quantity}
                 </span>
@@ -86,8 +95,12 @@ export function CheckoutContent({ locale }: { locale: string }) {
             ))}
             <Separator />
             <div className="flex justify-between font-bold">
-              <span>{isRtl ? 'المجموع' : 'Total'} ({totalItems})</span>
-              <span className="text-primary">{formatPrice(totalPrice, locale)}</span>
+              <span>
+                {isRtl ? 'المجموع' : 'Total'} ({totalItems})
+              </span>
+              <span className="text-primary">
+                {formatPrice(totalPrice, locale)}
+              </span>
             </div>
           </CardContent>
         </Card>

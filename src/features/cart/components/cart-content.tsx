@@ -9,7 +9,8 @@ import { CartItemRow } from './cart-item-row';
 import { CartSummary } from './cart-summary';
 
 export function CartContent({ locale }: { locale: string }) {
-  const { items, updateQuantity, removeItem, totalItems, totalPrice } = useCart();
+  const { items, updateQuantity, removeItem, totalItems, totalPrice } =
+    useCart();
   const router = useRouter();
   const isRtl = locale === 'ar';
 

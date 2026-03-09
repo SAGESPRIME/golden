@@ -60,6 +60,7 @@ npx vitest run
 ```
 
 Verifier la `validation.checklist` :
+
 - [ ] Tests ecrits
 - [ ] Pas de any
 - [ ] Fichiers < 200 lignes
@@ -138,11 +139,11 @@ Si tu decouvres un nouveau pattern reutilisable, ajoute-le EN HAUT de progress.t
 
 ## Conditions d'arret
 
-| Condition | Reponse |
-|-----------|---------|
-| Toutes stories `completed` | `<promise>COMPLETE</promise>` |
-| Aucune story eligible (toutes bloquees) | `<promise>BLOCKED</promise>` |
-| Story echoue apres 3 tentatives | `<promise>FAILED</promise>` |
+| Condition                               | Reponse                       |
+| --------------------------------------- | ----------------------------- |
+| Toutes stories `completed`              | `<promise>COMPLETE</promise>` |
+| Aucune story eligible (toutes bloquees) | `<promise>BLOCKED</promise>`  |
+| Story echoue apres 3 tentatives         | `<promise>FAILED</promise>`   |
 
 ## Regles importantes
 

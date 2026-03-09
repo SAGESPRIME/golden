@@ -2,6 +2,10 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import { FeaturedProducts } from './featured-products';
 
+vi.mock('convex/react', () => ({
+  useQuery: () => undefined,
+}));
+
 vi.mock('next/image', () => ({
   default: (props: Record<string, unknown>) => {
     const { fill, priority, ...rest } = props;
@@ -10,8 +14,14 @@ vi.mock('next/image', () => ({
 }));
 
 vi.mock('next/link', () => ({
-  default: ({ children, href, ...props }: { children: React.ReactNode; href: string } & Record<string, unknown>) => (
-    <a href={href} {...props}>{children}</a>
+  default: ({
+    children,
+    href,
+    ...props
+  }: { children: React.ReactNode; href: string } & Record<string, unknown>) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
@@ -44,7 +54,6 @@ describe('FeaturedProducts', () => {
 
   it('renders only featured products', () => {
     render(<FeaturedProducts locale="fr" />);
-    // We know there are 3 featured products in seed data
     const cards = screen.getAllByRole('img');
     expect(cards.length).toBeGreaterThanOrEqual(3);
   });

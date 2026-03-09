@@ -1,13 +1,27 @@
+'use client';
+
 import { useMemo } from 'react';
+import { useQuery } from 'convex/react';
+import { api } from '../../../../convex/_generated/api';
 import { seedProducts } from '../data/seed';
 import type { CategoryKey, SeedProduct, UseProductsReturn } from '../types';
 
 export function useProducts(): UseProductsReturn {
-  const products = seedProducts;
+  const convexProducts = useQuery(api.products.list);
+
+  // Fallback to seed data while Convex loads or if unavailable
+  const products: SeedProduct[] = useMemo(() => {
+    if (convexProducts === undefined) return seedProducts;
+    if (convexProducts.length === 0) return seedProducts;
+    return convexProducts.map((p) => ({
+      ...p,
+      _id: p._id.toString(),
+    }));
+  }, [convexProducts]);
 
   const featuredProducts = useMemo(
     () => products.filter((p) => p.featured),
-    [products],
+    [products]
   );
 
   const categories = useMemo(() => {
@@ -27,6 +41,6 @@ export function useProducts(): UseProductsReturn {
     getBySlug,
     getByCategory,
     categories,
-    isLoading: false,
+    isLoading: convexProducts === undefined,
   };
 }

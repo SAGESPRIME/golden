@@ -10,6 +10,7 @@ Quand tu travailles sur l'architecture, le routing, ou la structure du projet :
 → Consulte `.claude/agents/fullstack-architect.md`
 
 **Inclut** :
+
 - Creation de nouvelles pages
 - Structure des composants
 - Routing et navigation (App Router + i18n)
@@ -25,6 +26,7 @@ Quand tu travailles sur les branches, PR, ou releases :
 → Consulte `.claude/agents/git-workflow.md`
 
 **Inclut** :
+
 - Gestion des branches
 - Pull requests
 - Merges et releases
@@ -42,14 +44,14 @@ Quand tu travailles sur les branches, PR, ou releases :
 
 ## Skills disponibles
 
-| Skill | Usage |
-|-------|-------|
-| `/start` | Point d'entree : detecte l'etat et guide |
-| `/init` | Initialiser le projet (dependances, structure) |
-| `/constitution` | Definir les principes du projet |
-| `/prd [feature]` | Creer un PRD avec user stories |
-| `/plan` | Creer le plan technique |
-| `/ralph` | Lancer l'implementation autonome |
-| `/review` | Faire une review du code modifie |
-| `/test` | Lancer les tests et analyser les erreurs |
-| `/fix [erreur]` | Corriger une erreur specifique |
+| Skill            | Usage                                          |
+| ---------------- | ---------------------------------------------- |
+| `/start`         | Point d'entree : detecte l'etat et guide       |
+| `/init`          | Initialiser le projet (dependances, structure) |
+| `/constitution`  | Definir les principes du projet                |
+| `/prd [feature]` | Creer un PRD avec user stories                 |
+| `/plan`          | Creer le plan technique                        |
+| `/ralph`         | Lancer l'implementation autonome               |
+| `/review`        | Faire une review du code modifie               |
+| `/test`          | Lancer les tests et analyser les erreurs       |
+| `/fix [erreur]`  | Corriger une erreur specifique                 |

@@ -1,10 +1,12 @@
 # Skill: Test Runner & Analyzer
 
 ---
+
 name: test
 description: Lance les tests et analyse les resultats. Use when tests fail or when the user wants to run tests.
 argument-hint: [fichier|pattern] [--watch] [--coverage]
 allowed-tools: Read, Bash, Glob, Grep
+
 ---
 
 ## Aide (--help)
@@ -41,6 +43,7 @@ Tu lances les tests et aides a comprendre/corriger les erreurs.
 ### Workflow
 
 1. **Lancer les tests**
+
    ```bash
    npx vitest run
    # Ou avec options
@@ -77,8 +80,10 @@ Couverture : XX%
 
 **Erreur** :
 ```
+
 Expected: "12,50 EUR"
 Received: "12.50 EUR"
+
 ```
 
 **Cause probable** :

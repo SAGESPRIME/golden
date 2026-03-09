@@ -2,7 +2,13 @@
 
 import { ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { formatPrice } from '@/lib/utils';
 
@@ -13,7 +19,12 @@ interface CartSummaryProps {
   onCheckout: () => void;
 }
 
-export function CartSummary({ totalPrice, totalItems, locale, onCheckout }: CartSummaryProps) {
+export function CartSummary({
+  totalPrice,
+  totalItems,
+  locale,
+  onCheckout,
+}: CartSummaryProps) {
   const isRtl = locale === 'ar';
 
   return (
@@ -31,11 +42,18 @@ export function CartSummary({ totalPrice, totalItems, locale, onCheckout }: Cart
         <Separator />
         <div className="flex justify-between font-bold text-lg">
           <span>{isRtl ? 'المجموع' : 'Total'}</span>
-          <span className="text-primary">{formatPrice(totalPrice, locale)}</span>
+          <span className="text-primary">
+            {formatPrice(totalPrice, locale)}
+          </span>
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full" size="lg" disabled={totalItems === 0} onClick={onCheckout}>
+        <Button
+          className="w-full"
+          size="lg"
+          disabled={totalItems === 0}
+          onClick={onCheckout}
+        >
           <ShoppingCart className="size-4" />
           {isRtl ? 'إتمام الطلب' : 'Commander'}
         </Button>

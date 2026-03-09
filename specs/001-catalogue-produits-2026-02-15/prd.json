@@ -5,11 +5,7 @@
   "spec": "specs/001-catalogue-produits-2026-02-15",
   "plan": "specs/001-catalogue-produits-2026-02-15/plan.md",
   "validation": {
-    "preCommit": [
-      "npm run typecheck",
-      "npm run lint",
-      "npx vitest run"
-    ],
+    "preCommit": ["npm run typecheck", "npm run lint", "npx vitest run"],
     "checklist": [
       "Tests ecrits AVANT le code",
       "Pas de any",
@@ -71,10 +67,7 @@
         "src/features/products/components/product-grid.test.tsx",
         "src/app/[locale]/products/page.tsx"
       ],
-      "filesToModify": [
-        "src/messages/fr.json",
-        "src/messages/ar.json"
-      ],
+      "filesToModify": ["src/messages/fr.json", "src/messages/ar.json"],
       "priority": 1,
       "blockedBy": ["US-005"],
       "estimatedSize": "M",
@@ -134,10 +127,7 @@
         "src/features/products/components/product-detail.test.tsx",
         "src/app/[locale]/products/[slug]/page.tsx"
       ],
-      "filesToModify": [
-        "src/messages/fr.json",
-        "src/messages/ar.json"
-      ],
+      "filesToModify": ["src/messages/fr.json", "src/messages/ar.json"],
       "priority": 3,
       "blockedBy": ["US-001"],
       "estimatedSize": "M",
@@ -195,9 +185,7 @@
         "src/features/products/components/featured-products.tsx",
         "src/features/products/components/featured-products.test.tsx"
       ],
-      "filesToModify": [
-        "src/app/[locale]/page.tsx"
-      ],
+      "filesToModify": ["src/app/[locale]/page.tsx"],
       "priority": 5,
       "blockedBy": ["US-001", "US-005"],
       "estimatedSize": "S",

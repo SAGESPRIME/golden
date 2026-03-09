@@ -16,27 +16,27 @@ products: defineTable({
     ar: v.string(),
   }),
   slug: v.string(),
-  price: v.number(),              // En centimes EUR
+  price: v.number(), // En centimes EUR
   compareAtPrice: v.optional(v.number()), // Ancien prix (promo)
-  images: v.array(v.string()),    // URLs des images (1-3)
-  category: v.string(),           // Ex: "mountain", "forest", "flower"
-  weight: v.number(),             // En grammes
+  images: v.array(v.string()), // URLs des images (1-3)
+  category: v.string(), // Ex: "mountain", "forest", "flower"
+  weight: v.number(), // En grammes
   inStock: v.boolean(),
   featured: v.boolean(),
 })
   .index('by_slug', ['slug'])
   .index('by_category', ['category'])
-  .index('by_featured', ['featured'])
+  .index('by_featured', ['featured']);
 ```
 
 ## Queries Convex (existantes)
 
-| Query | Args | Retour | Usage |
-|-------|------|--------|-------|
-| `products.list` | - | `Product[]` | Page listing |
-| `products.listFeatured` | - | `Product[]` | Homepage vedettes |
-| `products.getBySlug` | `{ slug }` | `Product \| null` | Fiche produit |
-| `products.listByCategory` | `{ category }` | `Product[]` | Filtrage (futur) |
+| Query                     | Args           | Retour            | Usage             |
+| ------------------------- | -------------- | ----------------- | ----------------- |
+| `products.list`           | -              | `Product[]`       | Page listing      |
+| `products.listFeatured`   | -              | `Product[]`       | Homepage vedettes |
+| `products.getBySlug`      | `{ slug }`     | `Product \| null` | Fiche produit     |
+| `products.listByCategory` | `{ category }` | `Product[]`       | Filtrage (futur)  |
 
 ## Seed Data
 
@@ -44,13 +44,13 @@ Les seed data dans `src/features/products/data/seed.ts` suivent exactement le me
 
 ### Categories prevues
 
-| Cle | FR | AR |
-|-----|----|----|
-| `mountain` | Miel de montagne | عسل الجبال |
-| `forest` | Miel de foret | عسل الغابة |
-| `flower` | Miel de fleurs | عسل الأزهار |
-| `rare` | Miel rare | عسل نادر |
-| `organic` | Miel bio | عسل عضوي |
+| Cle        | FR               | AR          |
+| ---------- | ---------------- | ----------- |
+| `mountain` | Miel de montagne | عسل الجبال  |
+| `forest`   | Miel de foret    | عسل الغابة  |
+| `flower`   | Miel de fleurs   | عسل الأزهار |
+| `rare`     | Miel rare        | عسل نادر    |
+| `organic`  | Miel bio         | عسل عضوي    |
 
 ## Relations
 

@@ -32,7 +32,7 @@ export function ImageGallery({ images, alt }: ImageGalleryProps) {
               onClick={() => setActiveIndex(index)}
               className={cn(
                 'relative size-16 overflow-hidden rounded-lg border-2 transition-colors',
-                activeIndex === index ? 'border-primary' : 'border-transparent',
+                activeIndex === index ? 'border-primary' : 'border-transparent'
               )}
             >
               <Image

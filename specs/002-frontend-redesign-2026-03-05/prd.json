@@ -1,0 +1,254 @@
+{
+  "version": "2.0",
+  "branchName": "feature/frontend-redesign",
+  "constitution": "specs/constitution.md",
+  "spec": "specs/002-frontend-redesign-2026-03-05",
+  "plan": "specs/002-frontend-redesign-2026-03-05/plan.md",
+  "validation": {
+    "preCommit": ["npm run typecheck", "npm run lint", "npx vitest run"],
+    "checklist": [
+      "Pas de any",
+      "Fichiers < 100 lignes",
+      "Traductions FR + AR",
+      "Compatible RTL",
+      "next/image pour toutes les images"
+    ]
+  },
+  "userStories": [
+    {
+      "id": "US-001",
+      "title": "Header 4-barres style Famille Mary",
+      "description": "Refonte complete du header avec AnnouncementBar (barre noire), UtilityBar (liens secondaires + langue), MainBar (logo + recherche decorative + icons), CategoryNav (nav categories horizontale avec separateurs)",
+      "acceptanceCriteria": [
+        "4 zones de header visibles et distinctes",
+        "AnnouncementBar : fond noir, texte livraison offerte",
+        "UtilityBar : fond gris clair, liens Blog/Contact, selecteur FR/AR",
+        "MainBar : logo gauche, input recherche centre (decoratif), compte+panier droite",
+        "CategoryNav : liens categories horizontaux avec pipes separateurs",
+        "Header sticky au scroll uniquement a partir de MainBar",
+        "Support RTL complet",
+        "Responsive : CategoryNav devient menu hamburger sur mobile"
+      ],
+      "technicalNotes": "Modifier src/components/layout/header.tsx. Decomposer en 4 sous-composants internes. Garder 'use client' pour scroll+cart. CategoryNav liste : Nos Miels | Montagne | Foret | Fleurs | Rare | Bio",
+      "filesToCreate": [],
+      "filesToModify": ["src/components/layout/header.tsx"],
+      "priority": 1,
+      "blockedBy": [],
+      "estimatedSize": "M",
+      "status": "pending"
+    },
+    {
+      "id": "US-002",
+      "title": "Hero Carousel plein-largeur",
+      "description": "Remplacer le hero split 2-colonnes avec SVG hexagone par un slider plein-largeur avec 3 slides produit, navigation dots + fleches, autoplay 5s, pause on hover",
+      "acceptanceCriteria": [
+        "Slider plein-largeur (100vw) sans marges",
+        "3 slides avec fond colore or/creme/brun",
+        "Chaque slide : image produit gauche + texte promo + CTA droite",
+        "Dots de navigation en bas",
+        "Fleches prev/next sur les cotes",
+        "Autoplay 5s, pause on hover",
+        "Transition CSS slide horizontal",
+        "Support RTL (ordre inverse)",
+        "Responsive : image masquee sur mobile, texte seul"
+      ],
+      "technicalNotes": "Modifier src/features/home/components/hero-section.tsx. Utiliser useState + useEffect pour autoplay. Images produits avec next/image (placeholder SVG si pas d'image). Pas de librairie externe.",
+      "filesToCreate": [],
+      "filesToModify": ["src/features/home/components/hero-section.tsx"],
+      "priority": 1,
+      "blockedBy": ["US-001"],
+      "estimatedSize": "M",
+      "status": "pending"
+    },
+    {
+      "id": "US-003",
+      "title": "Trust Badges narratifs (style Famille Mary)",
+      "description": "Remplacer les stats chiffrees (100%, 7+, 48h, 4.9/5) par 5 badges narratifs horizontaux avec icone + titre + description, style maison/heritage",
+      "acceptanceCriteria": [
+        "5 badges en ligne (desktop) / grille 2x3 (mobile)",
+        "Chaque badge : icone doree + titre gras + description courte",
+        "Contenu : Miel algerien authentique | Qualite artisanale | Respect des abeilles | 100% naturel | Avis verifies",
+        "Style sobre sans fond colore (pas de carte elevee)",
+        "Separateurs verticaux entre badges sur desktop",
+        "Traductions FR + AR"
+      ],
+      "technicalNotes": "Modifier src/features/home/components/trust-stats.tsx. Changer la structure des donnees STATS_FR/STATS_AR. Layout flex avec dividers.",
+      "filesToCreate": [],
+      "filesToModify": ["src/features/home/components/trust-stats.tsx"],
+      "priority": 2,
+      "blockedBy": [],
+      "estimatedSize": "S",
+      "status": "pending"
+    },
+    {
+      "id": "US-004",
+      "title": "Grille de categories avec icones",
+      "description": "Nouveau composant CategoryGrid affichant les 5 categories de miel + 'Voir tout' sous forme de tiles avec icone/emoji dans cercle dore et nom dessous",
+      "acceptanceCriteria": [
+        "6 tiles (5 categories + Voir tout)",
+        "Layout : 3 colonnes mobile, 6 colonnes desktop",
+        "Chaque tile : cercle bg-gold-100 avec icone/emoji + nom categorie dessous",
+        "Hover : scale-105 + bordure primary",
+        "Liens vers /products?cat=X",
+        "Traductions FR + AR pour chaque categorie",
+        "Titre de section 'Nos miels par terroir'"
+      ],
+      "technicalNotes": "Creer src/features/home/components/category-grid.tsx. Icones : Mountain (montagne), Trees (foret), Flower2 (fleurs), Gem (rare), Leaf (bio). Lien 'Voir tout' vers /products sans filtre.",
+      "filesToCreate": ["src/features/home/components/category-grid.tsx"],
+      "filesToModify": [
+        "src/features/home/index.ts",
+        "src/app/[locale]/page.tsx"
+      ],
+      "priority": 2,
+      "blockedBy": [],
+      "estimatedSize": "S",
+      "status": "pending"
+    },
+    {
+      "id": "US-005",
+      "title": "ProductCard style boutique classique",
+      "description": "Refactorer ProductCard pour le style e-commerce classique Famille Mary : etoiles fixes 4.8/5, 2 boutons uppercase (AJOUTER AU PANIER + VOIR LE PRODUIT), badges top-left",
+      "acceptanceCriteria": [
+        "Image aspect-square avec hover scale-105",
+        "Badges top-left : 'Nouveaute' | 'Bio' | 'Promo -X%' (pas top-right)",
+        "5 etoiles remplies fixes + '4.8/5' en texte",
+        "Nom produit line-clamp-2",
+        "Prix bold + prix barre si promo",
+        "Bouton 'AJOUTER AU PANIER' : plein largeur, uppercase, tracking-wide, primary",
+        "Bouton 'VOIR LE PRODUIT' : plein largeur, uppercase, tracking-wide, outline",
+        "Rupture de stock : les 2 boutons desactives + overlay semi-transparent",
+        "Traductions FR + AR"
+      ],
+      "technicalNotes": "Modifier src/features/products/components/product-card.tsx. Radius boutons : rounded-none ou rounded-sm (pas rounded-full). Les tests existants doivent continuer a passer.",
+      "filesToCreate": [],
+      "filesToModify": ["src/features/products/components/product-card.tsx"],
+      "priority": 2,
+      "blockedBy": [],
+      "estimatedSize": "S",
+      "status": "pending"
+    },
+    {
+      "id": "US-006",
+      "title": "Carousel des bienfaits categories",
+      "description": "Remplacer le carousel de temoignages par un carousel des types de miel style 'Les bienfaits du miel algerien' avec cards categories navigables",
+      "acceptanceCriteria": [
+        "Titre de section : 'Les bienfaits du miel algerien'",
+        "5 cards categories (montagne, foret, fleurs, rare, bio)",
+        "Chaque card : image/icone + nom categorie + description courte des bienfaits",
+        "Navigation prev/next manuelle (pas d'autoplay)",
+        "Bouton 'VOIR TOUS NOS MIELS' en bas",
+        "Scroll horizontal sur mobile",
+        "Traductions FR + AR"
+      ],
+      "technicalNotes": "Modifier src/features/home/components/testimonials-section.tsx. Remplacer les temoignages par les donnees de categories. Carousel simple avec overflow-x-auto sur mobile, flex sur desktop.",
+      "filesToCreate": [],
+      "filesToModify": [
+        "src/features/home/components/testimonials-section.tsx"
+      ],
+      "priority": 3,
+      "blockedBy": [],
+      "estimatedSize": "S",
+      "status": "pending"
+    },
+    {
+      "id": "US-007",
+      "title": "Bandeau Histoire de la marque",
+      "description": "Transformer story-section (4 piliers) en bandeau narratif style Famille Mary avec texte + image + CTA 'Qui sommes-nous'",
+      "acceptanceCriteria": [
+        "Layout 2 colonnes : texte gauche, image droite (inverse RTL)",
+        "Texte : titre + 2 paragraphes sur l'origine du miel algerien",
+        "CTA 'Qui sommes-nous ?' en uppercase outline",
+        "Image placeholder avec fond dore (next/image)",
+        "Fond bg-section-alt pour contraste",
+        "Traductions FR + AR"
+      ],
+      "technicalNotes": "Modifier src/features/home/components/story-section.tsx. Simplifier : enlever les 4 piliers. 2 colonnes grid. Image avec next/image + src placeholder.",
+      "filesToCreate": [],
+      "filesToModify": ["src/features/home/components/story-section.tsx"],
+      "priority": 3,
+      "blockedBy": [],
+      "estimatedSize": "S",
+      "status": "pending"
+    },
+    {
+      "id": "US-008",
+      "title": "Bandeau 6 garanties services",
+      "description": "Nouveau composant ServicesStrip avec 6 icones garanties e-commerce en ligne (livraison, paiement, delai, service client, retrait, expedition)",
+      "acceptanceCriteria": [
+        "6 items en ligne desktop / grille 2 colonnes mobile",
+        "Chaque item : icone Lucide + titre + description",
+        "Icones : Truck | Shield | Clock | Headphones | Store | Zap",
+        "Fond bg-muted avec bordures top/bottom",
+        "Icones couleur primary/gold",
+        "Traductions FR + AR"
+      ],
+      "technicalNotes": "Creer src/features/home/components/services-strip.tsx. Donnees statiques en tableau. Composant server (pas besoin de 'use client').",
+      "filesToCreate": ["src/features/home/components/services-strip.tsx"],
+      "filesToModify": [
+        "src/features/home/index.ts",
+        "src/app/[locale]/page.tsx"
+      ],
+      "priority": 3,
+      "blockedBy": [],
+      "estimatedSize": "S",
+      "status": "pending"
+    },
+    {
+      "id": "US-009",
+      "title": "Footer multi-colonnes avec newsletter",
+      "description": "Creer le footer complet style Famille Mary : newsletter + reseaux sociaux + 4 colonnes de liens + copyright",
+      "acceptanceCriteria": [
+        "Fond bg-warm-brown (brun fonce), texte clair",
+        "Section newsletter : titre + input email + bouton S'inscrire (non fonctionnel pour l'instant)",
+        "Icones reseaux sociaux (Facebook, Instagram, Youtube via Lucide)",
+        "4 colonnes : Nos produits | La maison | Aide | Legal",
+        "Liens produits par categorie",
+        "Copyright en bas",
+        "Responsive : colonnes empilees sur mobile",
+        "Traductions FR + AR"
+      ],
+      "technicalNotes": "Creer src/components/layout/footer.tsx. Composant server. Ajouter dans src/app/[locale]/layout.tsx apres le main. Input newsletter : state local non soumis.",
+      "filesToCreate": ["src/components/layout/footer.tsx"],
+      "filesToModify": ["src/app/[locale]/layout.tsx"],
+      "priority": 3,
+      "blockedBy": [],
+      "estimatedSize": "M",
+      "status": "pending"
+    },
+    {
+      "id": "US-010",
+      "title": "Mise a jour traductions et reordonnancement homepage",
+      "description": "Ajouter toutes les nouvelles cles de traduction FR + AR et reordonner les sections de la homepage selon le nouvel ordre Famille Mary",
+      "acceptanceCriteria": [
+        "Nouvelles cles ajoutees dans fr.json : trustBadges, categoryGrid, benefits, brandStory, services, footer",
+        "Memes cles en arabe dans ar.json",
+        "Ordre homepage : HeroCarousel > TrustBadges > CategoryGrid > FeaturedProducts > BenefitsCarousel > StorySection > ServicesStrip",
+        "Suppression du golden-divider entre sections",
+        "npm run typecheck passe",
+        "npm run lint passe"
+      ],
+      "technicalNotes": "Modifier src/messages/fr.json et ar.json. Modifier src/app/[locale]/page.tsx pour le nouvel ordre. Mettre a jour src/features/home/index.ts avec les nouveaux exports.",
+      "filesToCreate": [],
+      "filesToModify": [
+        "src/messages/fr.json",
+        "src/messages/ar.json",
+        "src/app/[locale]/page.tsx",
+        "src/features/home/index.ts"
+      ],
+      "priority": 4,
+      "blockedBy": [
+        "US-001",
+        "US-002",
+        "US-003",
+        "US-004",
+        "US-005",
+        "US-006",
+        "US-007",
+        "US-008",
+        "US-009"
+      ],
+      "estimatedSize": "S",
+      "status": "pending"
+    }
+  ]
+}

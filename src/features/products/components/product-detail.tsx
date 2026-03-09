@@ -17,7 +17,8 @@ export interface ProductDetailProps {
 
 export function ProductDetail({ product, locale }: ProductDetailProps) {
   const name = locale === 'ar' ? product.name.ar : product.name.fr;
-  const description = locale === 'ar' ? product.description.ar : product.description.fr;
+  const description =
+    locale === 'ar' ? product.description.ar : product.description.fr;
   const isRtl = locale === 'ar';
   const hasPromo = product.compareAtPrice !== undefined;
   const discount = hasPromo
@@ -30,7 +31,11 @@ export function ProductDetail({ product, locale }: ProductDetailProps) {
         href={`/${locale}/products`}
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-6"
       >
-        {isRtl ? <ArrowRight className="size-4" /> : <ArrowLeft className="size-4" />}
+        {isRtl ? (
+          <ArrowRight className="size-4" />
+        ) : (
+          <ArrowLeft className="size-4" />
+        )}
         {isRtl ? 'العودة إلى الكتالوج' : 'Retour au catalogue'}
       </Link>
 

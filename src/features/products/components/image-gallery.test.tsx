@@ -11,7 +11,11 @@ vi.mock('next/image', () => ({
 }));
 
 const singleImage = ['/images/miel-1.jpg'];
-const multipleImages = ['/images/miel-1.jpg', '/images/miel-2.jpg', '/images/miel-3.jpg'];
+const multipleImages = [
+  '/images/miel-1.jpg',
+  '/images/miel-2.jpg',
+  '/images/miel-3.jpg',
+];
 
 describe('ImageGallery', () => {
   it('renders the main image', () => {

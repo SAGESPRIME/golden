@@ -13,7 +13,7 @@ vi.mock('next/image', () => ({
 
 const mockItem: CartItem = {
   productId: 'prod_001',
-  name: { fr: 'Miel de Jijel', ar: 'عسل جيجل' },
+  name: { fr: 'Miel de Lavande Bio', ar: 'عسل اللافندر العضوي' },
   price: 3500,
   quantity: 2,
   image: '/images/test.jpg',
@@ -22,28 +22,48 @@ const mockItem: CartItem = {
 describe('CartItemRow', () => {
   it('renders item name in FR', () => {
     render(
-      <CartItemRow item={mockItem} locale="fr" onUpdateQuantity={vi.fn()} onRemove={vi.fn()} />,
+      <CartItemRow
+        item={mockItem}
+        locale="fr"
+        onUpdateQuantity={vi.fn()}
+        onRemove={vi.fn()}
+      />
     );
-    expect(screen.getByText('Miel de Jijel')).toBeInTheDocument();
+    expect(screen.getByText('Miel de Lavande Bio')).toBeInTheDocument();
   });
 
   it('renders item name in AR', () => {
     render(
-      <CartItemRow item={mockItem} locale="ar" onUpdateQuantity={vi.fn()} onRemove={vi.fn()} />,
+      <CartItemRow
+        item={mockItem}
+        locale="ar"
+        onUpdateQuantity={vi.fn()}
+        onRemove={vi.fn()}
+      />
     );
-    expect(screen.getByText('عسل جيجل')).toBeInTheDocument();
+    expect(screen.getByText('عسل اللافندر العضوي')).toBeInTheDocument();
   });
 
   it('renders formatted price', () => {
     render(
-      <CartItemRow item={mockItem} locale="fr" onUpdateQuantity={vi.fn()} onRemove={vi.fn()} />,
+      <CartItemRow
+        item={mockItem}
+        locale="fr"
+        onUpdateQuantity={vi.fn()}
+        onRemove={vi.fn()}
+      />
     );
     expect(screen.getByText(/70,00/)).toBeInTheDocument();
   });
 
   it('renders quantity', () => {
     render(
-      <CartItemRow item={mockItem} locale="fr" onUpdateQuantity={vi.fn()} onRemove={vi.fn()} />,
+      <CartItemRow
+        item={mockItem}
+        locale="fr"
+        onUpdateQuantity={vi.fn()}
+        onRemove={vi.fn()}
+      />
     );
     expect(screen.getByText('2')).toBeInTheDocument();
   });
@@ -51,7 +71,12 @@ describe('CartItemRow', () => {
   it('calls onUpdateQuantity when + is clicked', async () => {
     const onUpdate = vi.fn();
     render(
-      <CartItemRow item={mockItem} locale="fr" onUpdateQuantity={onUpdate} onRemove={vi.fn()} />,
+      <CartItemRow
+        item={mockItem}
+        locale="fr"
+        onUpdateQuantity={onUpdate}
+        onRemove={vi.fn()}
+      />
     );
     const buttons = screen.getAllByRole('button');
     const plusButton = buttons.find((b) => b.textContent === '+');
@@ -62,7 +87,12 @@ describe('CartItemRow', () => {
   it('calls onUpdateQuantity when - is clicked', async () => {
     const onUpdate = vi.fn();
     render(
-      <CartItemRow item={mockItem} locale="fr" onUpdateQuantity={onUpdate} onRemove={vi.fn()} />,
+      <CartItemRow
+        item={mockItem}
+        locale="fr"
+        onUpdateQuantity={onUpdate}
+        onRemove={vi.fn()}
+      />
     );
     const buttons = screen.getAllByRole('button');
     const minusButton = buttons.find((b) => b.textContent === '-');
@@ -73,7 +103,12 @@ describe('CartItemRow', () => {
   it('calls onRemove when remove button is clicked', async () => {
     const onRemove = vi.fn();
     render(
-      <CartItemRow item={mockItem} locale="fr" onUpdateQuantity={vi.fn()} onRemove={onRemove} />,
+      <CartItemRow
+        item={mockItem}
+        locale="fr"
+        onUpdateQuantity={vi.fn()}
+        onRemove={onRemove}
+      />
     );
     const removeButton = screen.getByLabelText(/supprimer|remove/i);
     await userEvent.click(removeButton);
@@ -82,9 +117,14 @@ describe('CartItemRow', () => {
 
   it('renders product image', () => {
     render(
-      <CartItemRow item={mockItem} locale="fr" onUpdateQuantity={vi.fn()} onRemove={vi.fn()} />,
+      <CartItemRow
+        item={mockItem}
+        locale="fr"
+        onUpdateQuantity={vi.fn()}
+        onRemove={vi.fn()}
+      />
     );
     const img = screen.getByRole('img');
-    expect(img).toHaveAttribute('alt', 'Miel de Jijel');
+    expect(img).toHaveAttribute('alt', 'Miel de Lavande Bio');
   });
 });

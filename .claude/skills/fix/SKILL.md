@@ -1,10 +1,12 @@
 # Skill: Quick Fix
 
 ---
+
 name: fix
 description: Corrige rapidement une erreur ou un bug. Use when an error occurs or the user reports a bug.
 argument-hint: [description|erreur]
 allowed-tools: Read, Edit, Write, Bash, Glob, Grep
+
 ---
 
 ## Aide (--help)
@@ -68,16 +70,16 @@ Tu corriges rapidement les erreurs de maniere methodique.
 
 ### Types d'erreurs courants
 
-| Type | Approche |
-|------|----------|
-| TypeScript | Verifier les types, imports |
-| Runtime | Ajouter des null checks |
-| Build | Verifier les dependances |
-| Lint | Appliquer le format |
-| Test | Corriger le test ou le code |
-| Convex | Verifier schema, validateurs, mutations |
-| Stripe | Verifier webhook signature, API keys |
-| i18n | Verifier les cles de traduction |
+| Type       | Approche                                |
+| ---------- | --------------------------------------- |
+| TypeScript | Verifier les types, imports             |
+| Runtime    | Ajouter des null checks                 |
+| Build      | Verifier les dependances                |
+| Lint       | Appliquer le format                     |
+| Test       | Corriger le test ou le code             |
+| Convex     | Verifier schema, validateurs, mutations |
+| Stripe     | Verifier webhook signature, API keys    |
+| i18n       | Verifier les cles de traduction         |
 
 ### Format de reponse
 

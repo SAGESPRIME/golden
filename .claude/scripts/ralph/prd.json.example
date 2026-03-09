@@ -5,11 +5,7 @@
   "spec": "specs/001-product-catalog-2026-02-15",
   "plan": "specs/001-product-catalog-2026-02-15/plan.md",
   "validation": {
-    "preCommit": [
-      "npm run typecheck",
-      "npm run lint",
-      "npx vitest run"
-    ],
+    "preCommit": ["npm run typecheck", "npm run lint", "npx vitest run"],
     "checklist": [
       "Tests ecrits",
       "Pas de any",
@@ -29,10 +25,7 @@
         "typecheck passe"
       ],
       "technicalNotes": "Champs : name_fr, name_ar, description_fr, description_ar, price, weight, image, category, stock, featured",
-      "filesToCreate": [
-        "convex/schema.ts",
-        "convex/products.ts"
-      ],
+      "filesToCreate": ["convex/schema.ts", "convex/products.ts"],
       "filesToModify": [],
       "priority": 1,
       "blockedBy": [],
@@ -57,10 +50,7 @@
         "src/components/products/ProductGrid.tsx",
         "src/components/products/ProductFilters.tsx"
       ],
-      "filesToModify": [
-        "messages/fr.json",
-        "messages/ar.json"
-      ],
+      "filesToModify": ["messages/fr.json", "messages/ar.json"],
       "priority": 2,
       "blockedBy": ["US-001"],
       "estimatedSize": "L",
@@ -84,10 +74,7 @@
         "src/components/products/ProductGallery.tsx",
         "src/stores/cart-store.ts"
       ],
-      "filesToModify": [
-        "messages/fr.json",
-        "messages/ar.json"
-      ],
+      "filesToModify": ["messages/fr.json", "messages/ar.json"],
       "priority": 3,
       "blockedBy": ["US-001"],
       "estimatedSize": "M",
