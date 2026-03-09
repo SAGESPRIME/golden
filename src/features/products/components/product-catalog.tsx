@@ -10,11 +10,11 @@ import type { Category, CategoryKey, SeedProduct } from '../types';
 
 const CATEGORIES: Category[] = [
   { key: 'all', label: { fr: 'Tous', ar: 'الكل' } },
-  { key: 'mountain', label: { fr: 'Miel de montagne', ar: 'عسل الجبال' } },
-  { key: 'forest', label: { fr: 'Miel de foret', ar: 'عسل الغابة' } },
-  { key: 'flower', label: { fr: 'Miel de fleurs', ar: 'عسل الأزهار' } },
-  { key: 'rare', label: { fr: 'Miel rare', ar: 'عسل نادر' } },
-  { key: 'organic', label: { fr: 'Miel bio', ar: 'عسل عضوي' } },
+  { key: 'bien-etre', label: { fr: 'Bien-Être', ar: 'عناية طبيعية' } },
+  { key: 'lavande', label: { fr: 'Lavande', ar: 'لافندر' } },
+  { key: 'foret', label: { fr: 'Forêt', ar: 'غابة' } },
+  { key: 'fleurs', label: { fr: 'Fleurs', ar: 'أزهار' } },
+  { key: 'rare', label: { fr: 'Rareté', ar: 'نادر' } },
 ];
 
 export function ProductCatalog({ locale }: { locale: string }) {

@@ -1,5 +1,6 @@
 import { query, mutation } from './_generated/server';
 import { v } from 'convex/values';
+import { Id } from './_generated/dataModel';
 
 export const currentUser = query({
   args: {},
@@ -7,12 +8,9 @@ export const currentUser = query({
     const identity = await ctx.auth.getUserIdentity();
     if (!identity) return null;
 
-    const user = await ctx.db
-      .query('users')
-      .withIndex('email', (q) => q.eq('email', identity.email))
-      .unique();
-
-    return user;
+    // @convex-dev/auth subject format: "{userId}|{sessionId}"
+    const userId = identity.subject.split('|')[0] as Id<'users'>;
+    return await ctx.db.get(userId);
   },
 });
 
@@ -30,5 +28,18 @@ export const updateRole = mutation({
   },
   handler: async (ctx, args) => {
     await ctx.db.patch(args.userId, { role: args.role });
+  },
+});
+
+export const makeAdmin = mutation({
+  args: { email: v.string() },
+  handler: async (ctx, args) => {
+    const user = await ctx.db
+      .query('users')
+      .withIndex('email', (q) => q.eq('email', args.email))
+      .unique();
+    if (!user) return `User not found: ${args.email}`;
+    await ctx.db.patch(user._id, { role: 'admin' });
+    return `${args.email} is now admin`;
   },
 });

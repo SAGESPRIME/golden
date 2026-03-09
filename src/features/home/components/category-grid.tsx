@@ -5,19 +5,19 @@ interface CategoryGridProps {
 }
 
 const CATS_FR = [
-  { slug: 'mountain', label: 'Montagne', emoji: '🏔️' },
-  { slug: 'forest', label: 'For\u00EAt', emoji: '🌲' },
-  { slug: 'flower', label: 'Fleurs', emoji: '🌸' },
-  { slug: 'rare', label: 'Rare', emoji: '💎' },
-  { slug: 'organic', label: 'Bio', emoji: '🌿' },
+  { slug: 'bien-etre', label: 'Bien-Être', emoji: '🌿' },
+  { slug: 'lavande', label: 'Lavande', emoji: '💜' },
+  { slug: 'foret', label: 'Forêt', emoji: '🌲' },
+  { slug: 'fleurs', label: 'Fleurs', emoji: '🌸' },
+  { slug: 'rare', label: 'Rareté', emoji: '💎' },
 ];
 
 const CATS_AR = [
-  { slug: 'mountain', label: 'الجبال', emoji: '🏔️' },
-  { slug: 'forest', label: 'الغابة', emoji: '🌲' },
-  { slug: 'flower', label: 'الأزهار', emoji: '🌸' },
+  { slug: 'bien-etre', label: 'عناية طبيعية', emoji: '🌿' },
+  { slug: 'lavande', label: 'لافندر', emoji: '💜' },
+  { slug: 'foret', label: 'غابة', emoji: '🌲' },
+  { slug: 'fleurs', label: 'أزهار', emoji: '🌸' },
   { slug: 'rare', label: 'نادر', emoji: '💎' },
-  { slug: 'organic', label: 'عضوي', emoji: '🌿' },
 ];
 
 export function CategoryGrid({ locale }: CategoryGridProps) {
@@ -29,7 +29,7 @@ export function CategoryGrid({ locale }: CategoryGridProps) {
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 space-y-2">
           <h2 className="font-[var(--font-display)] text-2xl md:text-3xl font-bold">
-            {isRtl ? 'عسلنا حسب التضاريس' : 'Nos miels par terroir'}
+            {isRtl ? 'عسلنا حسب التشكيلة' : 'Nos miels par sélection'}
           </h2>
         </div>
         <div className="grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-6">

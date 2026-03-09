@@ -6,20 +6,20 @@ interface HeaderCategoryNavProps {
 
 const CATS_FR = [
   { label: 'Tous nos miels', slug: '' },
-  { label: 'Montagne', slug: 'mountain' },
-  { label: 'For\u00eat', slug: 'forest' },
-  { label: 'Fleurs', slug: 'flower' },
-  { label: 'Rare', slug: 'rare' },
-  { label: 'Bio', slug: 'organic' },
+  { label: 'Bien-Être', slug: 'bien-etre' },
+  { label: 'Lavande', slug: 'lavande' },
+  { label: 'Forêt', slug: 'foret' },
+  { label: 'Fleurs', slug: 'fleurs' },
+  { label: 'Rareté', slug: 'rare' },
 ];
 
 const CATS_AR = [
   { label: 'كل عسلنا', slug: '' },
-  { label: 'الجبال', slug: 'mountain' },
-  { label: 'الغابة', slug: 'forest' },
-  { label: 'الأزهار', slug: 'flower' },
+  { label: 'عناية طبيعية', slug: 'bien-etre' },
+  { label: 'لافندر', slug: 'lavande' },
+  { label: 'غابة', slug: 'foret' },
+  { label: 'أزهار', slug: 'fleurs' },
   { label: 'نادر', slug: 'rare' },
-  { label: 'عضوي', slug: 'organic' },
 ];
 
 export function HeaderCategoryNav({ locale }: HeaderCategoryNavProps) {

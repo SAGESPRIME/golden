@@ -35,7 +35,7 @@ interface ProductFormProps {
   };
 }
 
-const categories = ['mountain', 'forest', 'flower', 'rare', 'organic'];
+const categories = ['bien-etre', 'lavande', 'foret', 'fleurs', 'rare'];
 
 export function ProductForm({ locale, initialData }: ProductFormProps) {
   const router = useRouter();
@@ -53,7 +53,7 @@ export function ProductForm({ locale, initialData }: ProductFormProps) {
     price: initialData?.price?.toString() ?? '',
     compareAtPrice: initialData?.compareAtPrice?.toString() ?? '',
     images: initialData?.images.join('\n') ?? '',
-    category: initialData?.category ?? 'mountain',
+    category: initialData?.category ?? 'bien-etre',
     weight: initialData?.weight?.toString() ?? '',
     inStock: initialData?.inStock ?? true,
     featured: initialData?.featured ?? false,

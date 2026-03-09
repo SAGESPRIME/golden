@@ -10,28 +10,28 @@ interface HeroSectionProps {
 
 const SLIDES_FR = [
   {
-    badge: 'Miel de Provence',
-    title: 'Le trésor des terroirs français',
-    desc: "Un miel d'exception récolté dans les garrigues provençales, parfumé à la lavande et au romarin.",
+    badge: 'Sélection Bien-Être',
+    title: 'Prenez soin de vous naturellement',
+    desc: 'Découvrez notre sélection de miels bien-être soigneusement choisis pour leurs vertus exceptionnelles. Le meilleur de l\u2019apithérapie pour enrichir votre quotidien.',
     cta: 'Découvrir',
-    href: '/products?cat=flower',
-    bg: 'from-gold-100 to-gold-200',
-    emoji: '🏔️',
-  },
-  {
-    badge: 'Sélection bio',
-    title: 'Pure nature, certifié bio',
-    desc: 'Nos miels bio récoltés dans des zones protégées françaises, loin de toute agriculture intensive.',
-    cta: 'Voir les miels bio',
-    href: '/products?cat=organic',
+    href: '/products?cat=bien-etre',
     bg: 'from-green-50 to-gold-50',
     emoji: '🌿',
   },
   {
-    badge: 'Miel rare',
-    title: 'Châtaignier des Cévennes',
-    desc: 'Récolté une fois par an dans les forêts de châtaigniers des Cévennes, au goût boisé et intense.',
-    cta: 'Découvrir les raretés',
+    badge: 'Lavande Sauvage',
+    title: 'Le trésor de l\u2019arrière-pays espagnol',
+    desc: 'Récoltés au c\u0153ur de l\u2019arrière-pays espagnol, nos miels allient pureté, authenticité et bienfaits naturels. Chaque goutte est le reflet d\u2019un terroir préservé.',
+    cta: 'Voir la lavande',
+    href: '/products?cat=lavande',
+    bg: 'from-gold-100 to-gold-200',
+    emoji: '💜',
+  },
+  {
+    badge: 'Essence de Ruche',
+    title: 'Miels traditionnels, douceur incomparable',
+    desc: 'Principalement cultivés en Espagne, nos miels de forêt et de fleurs proviennent de terroirs soigneusement sélectionnés. Bois, crémeux et d\u2019une douceur incomparable.',
+    cta: 'Explorer les raretés',
     href: '/products?cat=rare',
     bg: 'from-amber-100 to-gold-300',
     emoji: '✨',
@@ -40,28 +40,28 @@ const SLIDES_FR = [
 
 const SLIDES_AR = [
   {
-    badge: 'عسل بروفانس',
-    title: 'كنز أراضي فرنسا',
-    desc: 'عسل استثنائي يُحصد من أراضي بروفانس المعطرة باللافندر والروزماري.',
+    badge: 'تشكيلة العناية',
+    title: 'اعتنِ بنفسك بشكل طبيعي',
+    desc: 'اكتشف تشكيلة أعسال العناية المختارة بعناية لفضائلها الاستثنائية. أفضل ما تقدمه العلاجات النحلية لإثراء يومك.',
     cta: 'اكتشف',
-    href: '/products?cat=flower',
-    bg: 'from-gold-100 to-gold-200',
-    emoji: '🏔️',
-  },
-  {
-    badge: 'اختيار عضوي',
-    title: 'طبيعة خالصة، معتمد عضوياً',
-    desc: 'عسلنا العضوي يُحصد من مناطق محمية فرنسية بعيدة عن الزراعة المكثفة.',
-    cta: 'عسلنا العضوي',
-    href: '/products?cat=organic',
+    href: '/products?cat=bien-etre',
     bg: 'from-green-50 to-gold-50',
     emoji: '🌿',
   },
   {
-    badge: 'عسل نادر',
-    title: 'كستناء سيفين، ملك العسل',
-    desc: 'يُحصد مرة واحدة في السنة من غابات كستناء سيفين، بنكهة خشبية غنية وعميقة.',
-    cta: 'اكتشف النادر',
+    badge: 'لافندر بري',
+    title: 'كنز الريف الإسباني',
+    desc: 'يُحصد في قلب الريف الإسباني، عسلنا يجمع بين النقاء والأصالة والفوائد الطبيعية. كل قطرة تعكس أرضاً محفوظة.',
+    cta: 'عسل اللافندر',
+    href: '/products?cat=lavande',
+    bg: 'from-gold-100 to-gold-200',
+    emoji: '💜',
+  },
+  {
+    badge: 'جوهر الخلية',
+    title: 'أعسال تقليدية بحلاوة لا مثيل',
+    desc: 'مزروعة أساساً في إسبانيا، أعسال غاباتنا وأزهارنا تأتي من أراضٍ منتقاة بعناية. كريمية وبحلاوة لا تُضاهى.',
+    cta: 'استكشف النادر',
     href: '/products?cat=rare',
     bg: 'from-amber-100 to-gold-300',
     emoji: '✨',
@@ -105,7 +105,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
       <button
         onClick={prev}
         className="absolute start-4 top-1/2 -translate-y-1/2 size-10 flex items-center justify-center bg-white/80 hover:bg-white rounded-full shadow-md transition-all z-10"
-        aria-label={locale === 'ar' ? 'السابق' : 'Slide pr\u00E9c\u00E9dent'}
+        aria-label={locale === 'ar' ? 'السابق' : 'Slide précédent'}
       >
         <ChevronLeft className="size-5" />
       </button>

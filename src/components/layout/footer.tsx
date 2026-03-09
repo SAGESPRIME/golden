@@ -4,9 +4,26 @@ interface FooterProps {
   locale: string;
 }
 
+const CATS_FR = [
+  { slug: 'bien-etre', label: 'Bien-Être' },
+  { slug: 'lavande', label: 'Lavande' },
+  { slug: 'foret', label: 'Forêt' },
+  { slug: 'fleurs', label: 'Fleurs' },
+  { slug: 'rare', label: 'Rareté' },
+];
+
+const CATS_AR = [
+  { slug: 'bien-etre', label: 'عناية طبيعية' },
+  { slug: 'lavande', label: 'لافندر' },
+  { slug: 'foret', label: 'غابة' },
+  { slug: 'fleurs', label: 'أزهار' },
+  { slug: 'rare', label: 'نادر' },
+];
+
 export function Footer({ locale }: FooterProps) {
   const isRtl = locale === 'ar';
   const year = new Date().getFullYear();
+  const cats = isRtl ? CATS_AR : CATS_FR;
 
   return (
     <footer className="bg-warm-brown text-gold-100">
@@ -20,7 +37,7 @@ export function Footer({ locale }: FooterProps) {
             <p className="text-sm text-gold-200/60 mt-1">
               {isRtl
                 ? 'تلقَّ أحدث أخبارنا وعروضنا'
-                : 'Recevez nos actualit\u00E9s et offres exclusives'}
+                : 'Recevez nos actualités et offres exclusives'}
             </p>
           </div>
           <div className="flex gap-2 w-full md:w-auto">
@@ -41,49 +58,32 @@ export function Footer({ locale }: FooterProps) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1 space-y-3">
             <h3 className="font-[var(--font-display)] text-xl font-bold text-gold-300">
-              Golden Dahlia
+              DAHLIA
             </h3>
+            <p className="text-xs text-gold-400/70 uppercase tracking-widest">
+              {isRtl ? 'الطبيعة والعناية' : 'Nature & Bien-Être'}
+            </p>
             <p className="text-sm text-gold-200/60 leading-relaxed max-w-xs">
               {isRtl
-                ? 'عسل فرنسي عضوي فاخر، يُحصد بشغف وتقاليد عريقة من أجمل أراضي فرنسا.'
-                : 'Miel bio français premium, récolté avec passion dans les terroirs de France.'}
+                ? 'عسل استثنائي يُحصد في الريف الإسباني. نقاء وأصالة وفوائد طبيعية.'
+                : "Miels d'exception récoltés en Espagne. Pureté, authenticité et bienfaits naturels."}
             </p>
           </div>
 
           <div className="space-y-3">
             <h4 className="text-xs font-bold tracking-[0.15em] uppercase text-gold-400">
-              {isRtl ? 'منتجاتنا' : 'Nos produits'}
+              {isRtl ? 'تشكيلاتنا' : 'Nos sélections'}
             </h4>
             <nav className="flex flex-col gap-2 text-sm">
-              {['mountain', 'forest', 'flower', 'rare', 'organic'].map(
-                (cat) => (
-                  <Link
-                    key={cat}
-                    href={`/${locale}/products?cat=${cat}`}
-                    className="text-gold-200/60 hover:text-gold-200 transition-colors"
-                  >
-                    {cat === 'mountain'
-                      ? isRtl
-                        ? 'عسل الجبال'
-                        : 'Miel de montagne'
-                      : cat === 'forest'
-                        ? isRtl
-                          ? 'عسل الغابة'
-                          : 'Miel de for\u00EAt'
-                        : cat === 'flower'
-                          ? isRtl
-                            ? 'عسل الأزهار'
-                            : 'Miel de fleurs'
-                          : cat === 'rare'
-                            ? isRtl
-                              ? 'عسل نادر'
-                              : 'Miel rare'
-                            : isRtl
-                              ? 'عسل عضوي'
-                              : 'Miel bio'}
-                  </Link>
-                )
-              )}
+              {cats.map((cat) => (
+                <Link
+                  key={cat.slug}
+                  href={`/${locale}/products?cat=${cat.slug}`}
+                  className="text-gold-200/60 hover:text-gold-200 transition-colors"
+                >
+                  {cat.label}
+                </Link>
+              ))}
             </nav>
           </div>
 
@@ -115,34 +115,26 @@ export function Footer({ locale }: FooterProps) {
 
           <div className="space-y-3">
             <h4 className="text-xs font-bold tracking-[0.15em] uppercase text-gold-400">
-              {isRtl ? 'مساعدة' : 'Aide'}
+              {isRtl ? 'تواصل معنا' : 'Contact'}
             </h4>
             <nav className="flex flex-col gap-2 text-sm">
-              <Link
-                href={`/${locale}/cart`}
-                className="text-gold-200/60 hover:text-gold-200 transition-colors"
-              >
-                {isRtl ? 'السلة' : 'Mon panier'}
-              </Link>
-              <Link
-                href={`/${locale}/checkout`}
-                className="text-gold-200/60 hover:text-gold-200 transition-colors"
-              >
-                {isRtl ? 'الدفع' : 'Livraison'}
-              </Link>
-              <span className="text-gold-200/60">contact@goldendahlia.fr</span>
+              <span className="text-gold-200/60">www.dahlia.fr</span>
+              <span className="text-gold-200/60">+33 7 67 65 77 19</span>
+              <span className="text-gold-200/60">
+                7 rue Edgar Degas – 93600
+              </span>
             </nav>
           </div>
         </div>
 
         <div className="mt-10 border-t border-gold-900/30 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gold-200/40">
           <p>
-            &copy; {year} Golden Dahlia.{' '}
-            {isRtl ? 'جميع الحقوق محفوظة.' : 'Tous droits r\u00E9serv\u00E9s.'}
+            &copy; {year} DAHLIA Nature & Bien-Être.{' '}
+            {isRtl ? 'جميع الحقوق محفوظة.' : 'Tous droits réservés.'}
           </p>
           <div className="flex gap-4">
             <span>{isRtl ? 'شروط البيع' : 'CGV'}</span>
-            <span>{isRtl ? 'سياسة الخصوصية' : 'Confidentialit\u00E9'}</span>
+            <span>{isRtl ? 'سياسة الخصوصية' : 'Confidentialité'}</span>
           </div>
         </div>
       </div>

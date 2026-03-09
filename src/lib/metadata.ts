@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import type { SeedProduct } from '@/features/products/types';
 
-const SITE_NAME = 'Miel France Bio';
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mielfrancebio.fr';
+const SITE_NAME = 'DAHLIA Nature & Bien-Être';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dahlia.fr';
 
 interface PageMetadataOptions {
   title: string;
@@ -75,6 +75,6 @@ export function generateOrganizationSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      'Miel France Bio, maison francaise de miel biologique. Recolte, certifie, tracable.',
+      "DAHLIA Nature & Bien-Être — Miels d'exception récoltés en Espagne. Pureté, authenticité et bienfaits naturels.",
   };
 }

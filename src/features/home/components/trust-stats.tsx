@@ -1,4 +1,4 @@
-import { Home, Award, Heart, Leaf, Star } from 'lucide-react';
+import { MapPin, Award, Shield, Leaf, Star } from 'lucide-react';
 
 interface TrustStatsProps {
   locale: string;
@@ -6,24 +6,24 @@ interface TrustStatsProps {
 
 const BADGES_FR = [
   {
-    icon: Home,
-    title: 'Miel français bio',
-    desc: 'Récolté dans les terroirs de France',
+    icon: MapPin,
+    title: 'Origine Espagne',
+    desc: 'Arrière-pays espagnol préservé',
   },
   {
     icon: Award,
-    title: 'Qualité artisanale',
-    desc: 'Sans additif, sans traitement',
+    title: 'Pureté & Excellence',
+    desc: '100% Agriculture Naturel',
   },
   {
-    icon: Heart,
-    title: 'Respect des abeilles',
-    desc: 'Apiculture traditionnelle préservée',
+    icon: Shield,
+    title: 'Traçabilité totale',
+    desc: 'Origine certifiée et contrôlée',
   },
   {
     icon: Leaf,
-    title: '100% naturel & bio',
-    desc: 'Origine unique et traçable',
+    title: 'Sans additif',
+    desc: 'Authentique, non transformé',
   },
   {
     icon: Star,
@@ -33,10 +33,10 @@ const BADGES_FR = [
 ];
 
 const BADGES_AR = [
-  { icon: Home, title: 'عسل فرنسي عضوي', desc: 'يُحصد من أراضي فرنسا' },
-  { icon: Award, title: 'جودة حرفية', desc: 'بدون إضافات أو معالجة' },
-  { icon: Heart, title: 'احترام النحل', desc: 'تربية نحل تقليدية محفوظة' },
-  { icon: Leaf, title: '100% طبيعي وعضوي', desc: 'مصدر فريد وقابل للتتبع' },
+  { icon: MapPin, title: 'أصل إسبانيا', desc: 'ريف إسباني محفوظ' },
+  { icon: Award, title: 'النقاء والتميز', desc: '100% زراعة طبيعية' },
+  { icon: Shield, title: 'تتبع كامل', desc: 'أصل معتمد ومُراقَب' },
+  { icon: Leaf, title: 'بدون إضافات', desc: 'أصيل وغير معالج' },
   { icon: Star, title: 'آراء موثقة', desc: '+500 طلب تم توصيله' },
 ];
 
