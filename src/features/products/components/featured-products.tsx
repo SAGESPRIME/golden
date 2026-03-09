@@ -13,7 +13,10 @@ export interface FeaturedProductsProps {
 }
 
 export function FeaturedProducts({ locale }: FeaturedProductsProps) {
-  const { featuredProducts } = useProducts();
+  const { products } = useProducts();
+  const featuredProducts = products.filter(
+    (p) => p.category === 'bien-etre' || p.slug === 'miel-foret'
+  );
   const { addItem } = useCart();
   const isRtl = locale === 'ar';
 

@@ -6,8 +6,8 @@ import type { Category, CategoryKey } from '../types';
 
 const mockCategories: Category[] = [
   { key: 'all', label: { fr: 'Tous', ar: 'الكل' } },
-  { key: 'mountain', label: { fr: 'Miel de montagne', ar: 'عسل الجبال' } },
-  { key: 'forest', label: { fr: 'Miel de foret', ar: 'عسل الغابة' } },
+  { key: 'lavande', label: { fr: 'Lavande', ar: 'لافندر' } },
+  { key: 'foret', label: { fr: 'Forêt', ar: 'غابة' } },
 ];
 
 describe('CategoryFilter', () => {
@@ -21,8 +21,8 @@ describe('CategoryFilter', () => {
       />
     );
     expect(screen.getByText('Tous')).toBeInTheDocument();
-    expect(screen.getByText('Miel de montagne')).toBeInTheDocument();
-    expect(screen.getByText('Miel de foret')).toBeInTheDocument();
+    expect(screen.getByText('Lavande')).toBeInTheDocument();
+    expect(screen.getByText('Forêt')).toBeInTheDocument();
   });
 
   it('renders arabic labels when locale is AR', () => {
@@ -35,19 +35,19 @@ describe('CategoryFilter', () => {
       />
     );
     expect(screen.getByText('الكل')).toBeInTheDocument();
-    expect(screen.getByText('عسل الجبال')).toBeInTheDocument();
+    expect(screen.getByText('لافندر')).toBeInTheDocument();
   });
 
   it('highlights active category', () => {
     render(
       <CategoryFilter
         categories={mockCategories}
-        activeCategory="mountain"
+        activeCategory="lavande"
         onCategoryChange={vi.fn()}
         locale="fr"
       />
     );
-    const activeButton = screen.getByText('Miel de montagne');
+    const activeButton = screen.getByText('Lavande');
     expect(activeButton.closest('button')).toHaveAttribute(
       'data-variant',
       'default'
@@ -64,7 +64,7 @@ describe('CategoryFilter', () => {
         locale="fr"
       />
     );
-    await userEvent.click(screen.getByText('Miel de montagne'));
-    expect(onCategoryChange).toHaveBeenCalledWith('mountain' as CategoryKey);
+    await userEvent.click(screen.getByText('Lavande'));
+    expect(onCategoryChange).toHaveBeenCalledWith('lavande' as CategoryKey);
   });
 });
