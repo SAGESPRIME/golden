@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { toast } from 'sonner';
 import { useMutation } from 'convex/react';
 import { useRouter } from 'next/navigation';
 import { api } from '../../../../convex/_generated/api';
@@ -80,12 +81,24 @@ export function ProductForm({ locale, initialData }: ProductFormProps) {
     };
 
     startTransition(async () => {
-      if (isEditing && initialData) {
-        await updateProduct({ id: initialData._id as Id<'products'>, ...data });
-      } else {
-        await createProduct(data);
+      try {
+        if (isEditing && initialData) {
+          await updateProduct({
+            id: initialData._id as Id<'products'>,
+            ...data,
+          });
+        } else {
+          await createProduct(data);
+        }
+        toast.success(isRtl ? 'تم الحفظ بنجاح' : 'Produit sauvegardé');
+        router.push(`/${locale}/admin/products`);
+      } catch (err) {
+        toast.error(
+          isRtl
+            ? `خطأ: ${err instanceof Error ? err.message : String(err)}`
+            : `Erreur: ${err instanceof Error ? err.message : String(err)}`
+        );
       }
-      router.push(`/${locale}/admin/products`);
     });
   };
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, startTransition } from 'react';
 import { useCartStore } from '@/stores/cart-store';
 
 export function useCart() {
@@ -14,7 +14,7 @@ export function useCart() {
   const getTotalPrice = useCartStore((state) => state.getTotalPrice);
 
   useEffect(() => {
-    setHydrated(true);
+    startTransition(() => setHydrated(true));
   }, []);
 
   if (!hydrated) {

@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
+import { fetchQuery } from 'convex/nextjs';
+import { api } from '../../../../../convex/_generated/api';
 import { seedProducts } from '@/features/products/data/seed';
 import { ProductDetail } from '@/features/products/components/product-detail';
 import { generatePageMetadata, generateProductSchema } from '@/lib/metadata';
+import type { SeedProduct } from '@/features/products/types';
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -15,7 +18,17 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const product = seedProducts.find((p) => p.slug === slug);
+
+  let product: SeedProduct | undefined;
+  try {
+    const convexProduct = await fetchQuery(api.products.getBySlug, { slug });
+    if (convexProduct) {
+      product = { ...convexProduct, _id: convexProduct._id.toString() };
+    }
+  } catch {
+    product = seedProducts.find((p) => p.slug === slug);
+  }
+
   if (!product) return {};
 
   const name = locale === 'ar' ? product.name.ar : product.name.fr;
@@ -34,7 +47,17 @@ export default async function ProductPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const product = seedProducts.find((p) => p.slug === slug);
+  let product: SeedProduct | undefined;
+  try {
+    const convexProduct = await fetchQuery(api.products.getBySlug, { slug });
+    if (convexProduct) {
+      product = { ...convexProduct, _id: convexProduct._id.toString() };
+    }
+  } catch {}
+
+  if (!product) {
+    product = seedProducts.find((p) => p.slug === slug);
+  }
 
   if (!product) {
     notFound();

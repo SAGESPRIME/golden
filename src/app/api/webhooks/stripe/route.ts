@@ -5,6 +5,9 @@ import { getStripe } from '@/lib/stripe';
 import type Stripe from 'stripe';
 import type { Id } from '../../../../../convex/_generated/dataModel';
 
+// markAsPaid est idempotent côté Convex — pas besoin de vérifier getByStripeSession ici
+// (évite le TOCTOU entre la vérification et la mise à jour)
+
 function getConvex() {
   const url = process.env.NEXT_PUBLIC_CONVEX_URL;
   if (!url) throw new Error('Missing NEXT_PUBLIC_CONVEX_URL');
@@ -46,16 +49,11 @@ export async function POST(request: NextRequest) {
       const orderId = session.metadata?.orderId;
 
       if (orderId) {
-        const existing = await convex.query(api.orders.getByStripeSession, {
+        // markAsPaid est idempotent : safe à appeler plusieurs fois pour le même event
+        await convex.mutation(api.orders.markAsPaid, {
+          id: orderId as Id<'orders'>,
           stripeSessionId: session.id,
         });
-
-        if (!existing) {
-          await convex.mutation(api.orders.updateStatus, {
-            id: orderId as Id<'orders'>,
-            status: 'paid',
-          });
-        }
       }
       break;
     }

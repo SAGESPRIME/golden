@@ -5,20 +5,17 @@ import { api } from '../../../../convex/_generated/api';
 import { useAuth } from '@/hooks/use-auth';
 import { OrderCard } from './order-card';
 import type { Order } from '@/types';
-import type { Id } from '../../../../convex/_generated/dataModel';
 
 interface OrderListProps {
   locale: string;
 }
 
 export function OrderList({ locale }: OrderListProps) {
-  const { user } = useAuth();
+  const { isAuthenticated } = useAuth();
   const isRtl = locale === 'ar';
 
-  const orders = useQuery(
-    api.orders.listByUser,
-    user?._id ? { userId: user._id as Id<'users'> } : 'skip'
-  );
+  // listByUser reads userId from auth context server-side — skip if not logged in
+  const orders = useQuery(api.orders.listByUser, isAuthenticated ? {} : 'skip');
 
   if (orders === undefined) {
     return (

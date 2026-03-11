@@ -3,9 +3,8 @@ import { seedProducts } from '../data/seed';
 import type { SeedProduct } from '../types';
 
 describe('seedProducts', () => {
-  it('contains 6-8 products', () => {
-    expect(seedProducts.length).toBeGreaterThanOrEqual(6);
-    expect(seedProducts.length).toBeLessThanOrEqual(8);
+  it('contains at least 10 products', () => {
+    expect(seedProducts.length).toBeGreaterThanOrEqual(10);
   });
 
   it('has bilingual names and descriptions', () => {

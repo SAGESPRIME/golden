@@ -5,7 +5,6 @@ import {
   HeroSection,
   CategoryGrid,
   StorySection,
-  TestimonialsSection,
   ServicesStrip,
 } from '@/features/home';
 import {
@@ -67,7 +66,6 @@ export default async function HomePage({ params }: Props) {
         <FeaturedProducts locale={locale} />
         <StorySection locale={locale} />
         <CategoryGrid locale={locale} />
-        <TestimonialsSection locale={locale} />
         <ServicesStrip locale={locale} />
       </main>
     </>

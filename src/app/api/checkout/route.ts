@@ -3,7 +3,13 @@ import { ConvexHttpClient } from 'convex/browser';
 import { api } from '../../../../convex/_generated/api';
 import { getStripe } from '@/lib/stripe';
 import { shippingAddressSchema } from '@/lib/validators';
+import { checkRateLimit, getClientIp } from '@/lib/rate-limit';
 import type { CartItem } from '@/stores/cart-store';
+import type { Id } from '../../../../convex/_generated/dataModel';
+
+// 10 tentatives de checkout / 10 minutes par IP
+const CHECKOUT_RATE_LIMIT = 10;
+const CHECKOUT_WINDOW_MS = 10 * 60_000;
 
 function getConvex() {
   const url = process.env.NEXT_PUBLIC_CONVEX_URL;
@@ -19,12 +25,26 @@ interface CheckoutRequestBody {
 }
 
 export async function POST(request: NextRequest) {
+  const ip = getClientIp(request.headers);
+  if (
+    !checkRateLimit(`checkout:${ip}`, CHECKOUT_RATE_LIMIT, CHECKOUT_WINDOW_MS)
+  ) {
+    return NextResponse.json(
+      { error: 'Trop de tentatives. Réessayez dans 10 minutes.' },
+      { status: 429, headers: { 'Retry-After': '600' } }
+    );
+  }
+
   try {
     const body = (await request.json()) as CheckoutRequestBody;
     const { items, shippingAddress, locale, email } = body;
 
     if (!items || items.length === 0) {
       return NextResponse.json({ error: 'Cart is empty' }, { status: 400 });
+    }
+
+    if (items.length > 50) {
+      return NextResponse.json({ error: 'Too many items' }, { status: 400 });
     }
 
     const addressResult = shippingAddressSchema.safeParse(shippingAddress);
@@ -35,15 +55,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const totalAmount = items.reduce(
+    const convex = getConvex();
+
+    // ✅ Vérification des prix côté serveur — ignore les prix du client
+    const verifiedItems = await Promise.all(
+      items.map(async (item) => {
+        if (
+          item.quantity < 1 ||
+          item.quantity > 99 ||
+          !Number.isInteger(item.quantity)
+        ) {
+          throw new Error(`Invalid quantity for item: ${item.productId}`);
+        }
+        const product = await convex.query(api.products.getById, {
+          id: item.productId as Id<'products'>,
+        });
+        if (!product) throw new Error(`Product not found: ${item.productId}`);
+        if (!product.inStock)
+          throw new Error(`Product out of stock: ${item.productId}`);
+        // Prix autoritatif depuis la base de données
+        return { ...item, price: product.price, name: product.name };
+      })
+    );
+
+    const totalAmount = verifiedItems.reduce(
       (sum, item) => sum + item.price * item.quantity,
       0
     );
 
-    const convex = getConvex();
-
     const orderId = await convex.mutation(api.orders.create, {
-      items: items.map((item) => ({
+      items: verifiedItems.map((item) => ({
         productId: item.productId,
         name: item.name,
         price: item.price,
@@ -56,7 +97,7 @@ export async function POST(request: NextRequest) {
       email: email ?? addressResult.data.fullName,
     });
 
-    const lineItems = items.map((item) => ({
+    const lineItems = verifiedItems.map((item) => ({
       price_data: {
         currency: 'eur',
         product_data: {
