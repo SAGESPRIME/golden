@@ -117,82 +117,90 @@ function sanitizeMessages(
 }
 
 export async function POST(req: NextRequest) {
-  const ip = getClientIp(req.headers);
-  if (!checkRateLimit(`chat:${ip}`, CHAT_RATE_LIMIT, CHAT_WINDOW_MS)) {
-    return new Response('Trop de requêtes. Réessayez dans une minute.', {
-      status: 429,
-      headers: { 'Retry-After': '60' },
+  try {
+    const ip = getClientIp(req.headers);
+    if (!checkRateLimit(`chat:${ip}`, CHAT_RATE_LIMIT, CHAT_WINDOW_MS)) {
+      return new Response('Trop de requêtes. Réessayez dans une minute.', {
+        status: 429,
+        headers: { 'Retry-After': '60' },
+      });
+    }
+
+    const body = await req.json();
+    const { locale } = body;
+
+    // Filtrage anti-injection de prompt
+    const safeMessages = sanitizeMessages(body.messages);
+    if (safeMessages.length === 0) {
+      return new Response('Messages invalides.', { status: 400 });
+    }
+
+    if (!process.env.OPENROUTER_API_KEY) {
+      return new Response('Service IA non configuré.', { status: 503 });
+    }
+
+    const systemContent =
+      locale === 'ar'
+        ? SYSTEM_PROMPT +
+          '\n\nIMPORTANT : Le client parle arabe. Réponds toujours en arabe.'
+        : SYSTEM_PROMPT;
+
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://golden-defla.vercel.app',
+        'X-Title': 'Golden Dahlia Chatbot',
+      },
+      body: JSON.stringify({
+        model: 'google/gemini-2.0-flash-lite-001',
+        max_tokens: 400,
+        stream: true,
+        messages: [{ role: 'system', content: systemContent }, ...safeMessages],
+      }),
     });
-  }
 
-  const body = await req.json();
-  const { locale } = body;
+    if (!res.ok) {
+      return new Response('Erreur du service IA', { status: 500 });
+    }
 
-  // Filtrage anti-injection de prompt
-  const safeMessages = sanitizeMessages(body.messages);
-  if (safeMessages.length === 0) {
-    return new Response('Messages invalides.', { status: 400 });
-  }
+    const encoder = new TextEncoder();
+    const readable = new ReadableStream({
+      async start(controller) {
+        const reader = res.body?.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
 
-  const systemContent =
-    locale === 'ar'
-      ? SYSTEM_PROMPT +
-        '\n\nIMPORTANT : Le client parle arabe. Réponds toujours en arabe.'
-      : SYSTEM_PROMPT;
+        while (reader) {
+          const { done, value } = await reader.read();
+          if (done) break;
 
-  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://golden-defla.vercel.app',
-      'X-Title': 'Golden Dahlia Chatbot',
-    },
-    body: JSON.stringify({
-      model: 'google/gemini-2.0-flash-lite-001',
-      max_tokens: 400,
-      stream: true,
-      messages: [{ role: 'system', content: systemContent }, ...safeMessages],
-    }),
-  });
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() ?? '';
 
-  if (!res.ok) {
-    return new Response('Erreur du service IA', { status: 500 });
-  }
-
-  const encoder = new TextEncoder();
-  const readable = new ReadableStream({
-    async start(controller) {
-      const reader = res.body?.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-
-      while (reader) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() ?? '';
-
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const data = line.slice(6).trim();
-          if (data === '[DONE]') break;
-          try {
-            const json = JSON.parse(data);
-            const text = json.choices?.[0]?.delta?.content;
-            if (text) controller.enqueue(encoder.encode(text));
-          } catch {
-            // skip malformed chunk
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue;
+            const data = line.slice(6).trim();
+            if (data === '[DONE]') break;
+            try {
+              const json = JSON.parse(data);
+              const text = json.choices?.[0]?.delta?.content;
+              if (text) controller.enqueue(encoder.encode(text));
+            } catch {
+              // skip malformed chunk
+            }
           }
         }
-      }
-      controller.close();
-    },
-  });
+        controller.close();
+      },
+    });
 
-  return new Response(readable, {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' },
-  });
+    return new Response(readable, {
+      headers: { 'Content-Type': 'text/plain; charset=utf-8' },
+    });
+  } catch {
+    return new Response('Erreur du service IA', { status: 500 });
+  }
 }
